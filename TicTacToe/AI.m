@@ -20,60 +20,67 @@
 
 - (CGPoint)nextMoveForBoard: (Board *) board
 {
+    if (board.totalMovesPlayed == 0) {
+        return CGPointMake(0, 0);
+    }
     iterations = 0;
-    [self minimaxWithRoot:board withDepth:3 andMaximisingPlayer:YES andAlpha:INT_MIN beta:INT_MAX];
+    int bestUtility = [self minimaxWithRoot:board withDepth:300 andMaximisingPlayer:YES];
     NSLog(@"Best move: %@", NSStringFromCGPoint(self.chosenMove));
     NSLog(@"iterations: %i", iterations);
     return self.chosenMove;
 }
 
 static int iterations = 0;
-- (NSInteger) minimaxWithRoot:(Board *) board withDepth: (NSInteger) depth andMaximisingPlayer:(BOOL)maxPlayer andAlpha:(int)alpha beta:(int)beta
+- (NSInteger) minimaxWithRoot:(Board *) board withDepth: (NSInteger) depth andMaximisingPlayer: (BOOL) maxPlayer
 {
     iterations = iterations + 1;
+    NSMutableArray *scores = [NSMutableArray new];
+    NSMutableArray *moves = [NSMutableArray new];
     
     if (board.gameOver || [[board possibleMoves] count] == 0) {
         int score = [self scoreForBoard:board];
         return score;
     } else {
-        if (maxPlayer)
-        {
-            for (NSValue *moveWrapper in [board possibleMoves]) {
-                CGPoint move = moveWrapper.CGPointValue;
-                
-                Board *newBoard = [board copy];
+        
+        for (NSValue *moveWrapper in [board possibleMoves]) {
+            CGPoint move = moveWrapper.CGPointValue;
+            
+            Board *newBoard = [board copy];
+            if (newBoard.isCrossTurn) {
                 [newBoard playCrossMove:move];
-                
-                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:NO andAlpha:alpha beta:beta];
-                if (value > alpha) {
-                    self.chosenMove = move;
-                }
-                
-                alpha = MAX(alpha, value);
-                if (alpha >= beta) {
-                    return beta;
-                }
-            }
-            return alpha;
-        } else {
-            for (NSValue *moveWrapper in [board possibleMoves]) {
-                CGPoint move = moveWrapper.CGPointValue;
-                
-                Board *newBoard = [board copy];
+            } else {
                 [newBoard playCircleMove:move];
-                
-                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:YES andAlpha:alpha beta:beta];
-                
-                if (value < beta) {
-                    self.chosenMove = move;
-                }
-                
-                beta = MIN(beta, value);
-                if (alpha >= beta) {
-                    return alpha;
+            }
+        
+            [scores addObject:[NSNumber numberWithInt:[self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:NO]]];
+            [moves addObject:moveWrapper];
+        }
+        
+        if (board.isCrossTurn)
+        {
+            int max = 0;
+            int maxIndex = 0;
+            for (NSNumber *number in scores) {
+                if ([number intValue] >= max) {
+                    maxIndex = [scores indexOfObject:number];
+                    max = [number intValue];
                 }
             }
-            return beta;
+            
+            self.chosenMove = ((NSValue *)moves[maxIndex]).CGPointValue;
+            return [[scores objectAtIndex:maxIndex] intValue];
+        } else {
+            int min = 0;
+            int minIndex = 0;
+            for (NSNumber *number in scores) {
+                if ([number intValue] <= min) {
+                    minIndex = [scores indexOfObject:number];
+                    min = [number intValue];
+                }
+            }
+            
+            self.chosenMove = ((NSValue *)moves[minIndex]).CGPointValue;
+            return [[scores objectAtIndex:minIndex] intValue];
         }
     }
 }
@@ -87,9 +94,9 @@ static int iterations = 0;
 - (NSInteger)scoreForBoard: (Board *) board
 {
     if ([board.winner isEqualToString:@"X"]) {
-        return 100;
+        return 1;
     } else if ([board.winner isEqualToString:@"O"]) {
-        return -100;
+        return -1;
     } else {
         return 0;
     }

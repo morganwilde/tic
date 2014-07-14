@@ -13,6 +13,7 @@
 @property (nonatomic) NSInteger totalMovesPlayed;
 @property (nonatomic) BOOL gameOver;
 
+
 - (id) init;
 
 #pragma mark - Moving
@@ -23,6 +24,7 @@
 - (NSString *)counterAtPoint:(CGPoint)point;
 - (BOOL)isTileEmpty: (CGPoint) point;
 - (NSArray *)possibleMoves;
+- (int) scoreForCounter: (NSString *) counter;
 
 #pragma mark - Description
 - (NSString *) description;

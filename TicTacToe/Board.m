@@ -12,6 +12,7 @@
 
 @interface Board()
 @property (nonatomic, strong) NSMutableArray *boardArray;
+@property (nonatomic) BOOL isCrossTurn;
 
 - (BOOL)playMove:(CGPoint)move forCounter:(NSString *)counter;
 - (BOOL)checkRow: (NSInteger) row;
@@ -31,6 +32,7 @@
         self.totalMovesPlayed = 0;
         self.winner = @"NONE";
         self.gameOver = NO;
+        self.isCrossTurn = YES;
     }
     return self;
 }
@@ -38,18 +40,30 @@
 #pragma mark - Moving
 - (BOOL)playCrossMove:(CGPoint)move
 {
+    if (!self.isCrossTurn) {
+        NSLog(@"Error: It is not cross's turn. Move can't be played.");
+        return NO;
+    }
+    
     BOOL moveSuccessful = [self playMove:move forCounter:@"X"];
     if (moveSuccessful) {
         [self checkWinner];
+        self.isCrossTurn = NO;
     }
     return moveSuccessful;
 }
 
 - (BOOL)playCircleMove:(CGPoint)move
 {
+    if (self.isCrossTurn) {
+        NSLog(@"Error: It is not cirle's turn. Move can't be played.");
+        return NO;
+    }
+    
     BOOL moveSuccessful = [self playMove:move forCounter:@"O"];
     if (moveSuccessful) {
         [self checkWinner];
+        self.isCrossTurn = YES;
     }
     return moveSuccessful;
 }
@@ -102,6 +116,139 @@
     return moves;
 }
 
+- (int) scoreForCounter: (NSString *) counter
+{
+    int score = 0;
+    score += [self scoreRowsForCounter:counter];
+    score += [self scoreColumnsForCounter:counter];
+    score += [self scoreDiagonalsForCounter:counter];
+    return score;
+}
+
+#pragma mark - Score counting
+- (int)scoreRowsForCounter: (NSString *) counter
+{
+    NSString *oppCounter = @"";
+    if ([counter isEqualToString:@"X"]) {
+        oppCounter = @"O";
+    } else {
+        oppCounter = @"X";
+    }
+    
+    int score = 0;
+    for (int y = 0; y < 3; y++) {
+        int count = 0;
+        int opponentCount = 0;
+        for (int x = 0; x < 3; x++) {
+            CGPoint point = CGPointMake(x, y);
+            if ([[self counterAtPoint:point] isEqualToString:counter]) {
+                count++;
+            } else if ([[self counterAtPoint:point] isEqualToString:oppCounter]) {
+                opponentCount++;
+            }
+        }
+        score = score + [self scoreWithCount:count andOpponentCount:opponentCount];
+    }
+    
+    return score;
+}
+
+- (int)scoreColumnsForCounter: (NSString *) counter
+{
+    NSString *oppCounter = @"";
+    if ([counter isEqualToString:@"X"]) {
+        oppCounter = @"O";
+    } else {
+        oppCounter = @"X";
+    }
+    
+    int score = 0;
+    for (int x = 0; x < 3; x++) {
+        int count = 0;
+        int opponentCount = 0;
+        for (int y = 0; y < 3; y++) {
+            CGPoint point = CGPointMake(x, y);
+            if ([[self counterAtPoint:point] isEqualToString:counter]) {
+                count++;
+            } else if ([[self counterAtPoint:point] isEqualToString:oppCounter]) {
+                opponentCount++;
+            }
+        }
+        score = score + [self scoreWithCount:count andOpponentCount:opponentCount];
+    }
+    return score;
+}
+
+- (int)scoreDiagonalsForCounter: (NSString *)counter
+{
+    NSString *oppCounter = @"";
+    if ([counter isEqualToString:@"X"]) {
+        oppCounter = @"O";
+    } else {
+        oppCounter = @"X";
+    }
+    
+    int score = 0;
+    
+    int count = 0;
+    int opponentCount = 0;
+    for (int x = 0, y = 0; x < BOARD_HEIGHT && y < BOARD_WIDTH; x++, y++) {
+        CGPoint point = CGPointMake(x, y);
+        if ([[self counterAtPoint:point] isEqualToString:counter]) {
+            count++;
+        } else if ([[self counterAtPoint:point] isEqualToString:oppCounter]) {
+            opponentCount++;
+        }
+    }
+    score = score + [self scoreWithCount:count andOpponentCount:opponentCount];
+    
+    count = 0;
+    opponentCount = 0;
+    for (int x = 2, y = 0; x < BOARD_HEIGHT && y < BOARD_WIDTH; x--, y++) {
+        CGPoint point = CGPointMake(x, y);
+        if ([[self counterAtPoint:point] isEqualToString:counter]) {
+            count++;
+        } else if ([[self counterAtPoint:point] isEqualToString:oppCounter]) {
+            opponentCount++;
+        }
+    }
+    score = score + [self scoreWithCount:count andOpponentCount:opponentCount];
+    
+    return score;
+}
+
+- (int) scoreWithCount:(int)count andOpponentCount:(int)opponentCount
+{
+    int score = 0;
+    switch (count) {
+        case 3:
+            score += 100;
+            break;
+        case 2:
+            score += 10;
+            break;
+        case 1:
+            score += 1;
+            break;
+        default:
+            break;
+    }
+    switch (opponentCount) {
+        case 3:
+            score -= 100;
+            break;
+        case 2:
+            score -= 10;
+            break;
+        case 1:
+            score -= 1;
+            break;
+        default:
+            break;
+    }
+    return score;
+}
+
 #pragma mark - Win checking
 - (void)checkWinner
 {
@@ -109,7 +256,6 @@
     for (int x = 0; x < BOARD_WIDTH; x++) {
         if ([self checkColumn:x]) {
             self.gameOver = YES;
-            NSLog(@"Column win: %i",x);
         }
     }
     
@@ -117,17 +263,14 @@
     for (int y = 0; y < BOARD_HEIGHT; y++) {
         if ([self checkRow:y]) {
             self.gameOver = YES;
-            NSLog(@"Row win: %i",y);
         }
     }
     
     if ([self checkTopLeftDiagonal]) {
-        NSLog(@"Top left win");
         self.gameOver = YES;
     }
     
     if ([self checkTopRightDiagonal]) {
-        NSLog(@"Top right win");
         self.gameOver = YES;
     }
     
@@ -229,9 +372,10 @@
 - (NSMutableString *) description
 {
     NSMutableString *boardString = [NSMutableString string];
+    [boardString appendString:[NSString stringWithFormat:@"%@", [super description]]];
     [boardString appendString:@"\r"];
-    for (int x = 0; x < BOARD_WIDTH; x++) {
-        for (int y = 0; y < BOARD_HEIGHT; y++) {
+    for (int y = 0; y < BOARD_HEIGHT; y++) {
+        for (int x = 0; x < BOARD_WIDTH; x++) {
             [boardString appendString:[self.boardArray objectAtIndex:[self map:CGPointMake(x, y)]]];
             [boardString appendString:@" | "];
         }
@@ -251,6 +395,7 @@
     board.totalMovesPlayed = _totalMovesPlayed ;
     board.winner = [self.winner copy];
     board.gameOver = _gameOver;
+    board.isCrossTurn = self.isCrossTurn;
     return board;
 }
 

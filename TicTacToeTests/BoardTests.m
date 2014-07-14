@@ -194,20 +194,16 @@
     AI *ai = [[AI alloc] init];
     CGPoint point = [ai nextMoveForBoard:self.board];
     [self.board playCrossMove:point];
-    [self.board playCircleMove:CGPointMake(0, 1)];
+    NSLog(@"%@", self.board);
+    [self.board playCircleMove:CGPointMake(0, 0)];
     point = [ai nextMoveForBoard:self.board];
     [self.board playCrossMove:point];
-    [self.board playCircleMove:CGPointMake(2, 0)];
     NSLog(@"%@", self.board);
+    [self.board playCircleMove:CGPointMake(1, 0)];
     point = [ai nextMoveForBoard:self.board];
     [self.board playCrossMove:point];
     NSLog(@"%@", self.board);
 
-//    [self.board playCrossMove:point];
-//    [self.board playCircleMove:CGPointMake(1, 1)];
-//    point = [ai nextMoveForBoard:self.board];
-//    NSLog(@"point2: %@", NSStringFromCGPoint(point));
-    
 }
 
 #pragma mark - Scoring tests

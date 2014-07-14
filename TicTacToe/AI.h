@@ -13,6 +13,6 @@
 @property (nonatomic, strong) Board *gameBoard;
 
 - (CGPoint)nextMoveForBoard: (Board *) board;
-- (void)minimaxWithNode:node depth:depth andMaximisingPlayer:player;
+- (NSInteger) minimaxWithRoot:(Board *) board withDepth: (NSInteger) depth andMaximisingPlayer:(BOOL)maxPlayer andAlpha:(int)alpha beta:(int)beta;
 
 @end

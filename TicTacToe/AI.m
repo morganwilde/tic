@@ -21,14 +21,14 @@
 - (CGPoint)nextMoveForBoard: (Board *) board
 {
     iterations = 0;
-    int bestUtility = [self minimaxWithRoot:board withDepth:3 andMaximisingPlayer:YES];
+    [self minimaxWithRoot:board withDepth:3 andMaximisingPlayer:YES andAlpha:INT_MIN beta:INT_MAX];
     NSLog(@"Best move: %@", NSStringFromCGPoint(self.chosenMove));
     NSLog(@"iterations: %i", iterations);
     return self.chosenMove;
 }
 
 static int iterations = 0;
-- (NSInteger) minimaxWithRoot:(Board *) board withDepth: (NSInteger) depth andMaximisingPlayer: (BOOL) maxPlayer
+- (NSInteger) minimaxWithRoot:(Board *) board withDepth: (NSInteger) depth andMaximisingPlayer:(BOOL)maxPlayer andAlpha:(int)alpha beta:(int)beta
 {
     iterations = iterations + 1;
     
@@ -36,38 +36,45 @@ static int iterations = 0;
         int score = [self scoreForBoard:board];
         return score;
     } else {
-        int bestValue = 0;
         if (maxPlayer)
         {
-            bestValue = -10000;
             for (NSValue *moveWrapper in [board possibleMoves]) {
                 CGPoint move = moveWrapper.CGPointValue;
                 
                 Board *newBoard = [board copy];
                 [newBoard playCrossMove:move];
                 
-                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:NO];
-                if (value > bestValue) {
-                    bestValue = value;
+                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:NO andAlpha:alpha beta:beta];
+                if (value > alpha) {
                     self.chosenMove = move;
                 }
+                
+                alpha = MAX(alpha, value);
+                if (alpha >= beta) {
+                    return beta;
+                }
             }
+            return alpha;
         } else {
-            bestValue = 10000;
             for (NSValue *moveWrapper in [board possibleMoves]) {
                 CGPoint move = moveWrapper.CGPointValue;
                 
                 Board *newBoard = [board copy];
                 [newBoard playCircleMove:move];
                 
-                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:YES];
-                if (value < bestValue) {
-                    bestValue = value;
+                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:YES andAlpha:alpha beta:beta];
+                
+                if (value < beta) {
                     self.chosenMove = move;
                 }
+                
+                beta = MIN(beta, value);
+                if (alpha >= beta) {
+                    return alpha;
+                }
             }
+            return beta;
         }
-        return bestValue;
     }
 }
 

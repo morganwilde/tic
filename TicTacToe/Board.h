@@ -12,7 +12,7 @@
 @property (nonatomic, strong) NSString *winner;
 @property (nonatomic) NSInteger totalMovesPlayed;
 @property (nonatomic) BOOL gameOver;
-
+@property (nonatomic) BOOL isCrossTurn;
 
 - (id) init;
 

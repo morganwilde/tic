@@ -24,7 +24,7 @@
         return CGPointMake(0, 0);
     }
     iterations = 0;
-    int bestUtility = [self minimaxWithRoot:board withDepth:3 andMaximisingPlayer:YES];
+    int bestUtility = [self minimaxWithRoot:board withDepth:300 andMaximisingPlayer:YES];
     NSLog(@"Best move: %@", NSStringFromCGPoint(self.chosenMove));
     NSLog(@"iterations: %i", iterations);
     return self.chosenMove;
@@ -34,43 +34,54 @@ static int iterations = 0;
 - (NSInteger) minimaxWithRoot:(Board *) board withDepth: (NSInteger) depth andMaximisingPlayer: (BOOL) maxPlayer
 {
     iterations = iterations + 1;
+    NSMutableArray *scores = [NSMutableArray new];
+    NSMutableArray *moves = [NSMutableArray new];
     
     if (board.gameOver || [[board possibleMoves] count] == 0) {
         int score = [self scoreForBoard:board];
         return score;
     } else {
-        int bestValue = 0;
-        if (maxPlayer)
-        {
-            bestValue = -10000;
-            for (NSValue *moveWrapper in [board possibleMoves]) {
-                CGPoint move = moveWrapper.CGPointValue;
-                
-                Board *newBoard = [board copy];
+        
+        for (NSValue *moveWrapper in [board possibleMoves]) {
+            CGPoint move = moveWrapper.CGPointValue;
+            
+            Board *newBoard = [board copy];
+            if (newBoard.isCrossTurn) {
                 [newBoard playCrossMove:move];
-                
-                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:NO];
-                if (value > bestValue) {
-                    bestValue = value;
-                    self.chosenMove = move;
-                }
-            }
-        } else {
-            bestValue = 10000;
-            for (NSValue *moveWrapper in [board possibleMoves]) {
-                CGPoint move = moveWrapper.CGPointValue;
-                
-                Board *newBoard = [board copy];
+            } else {
                 [newBoard playCircleMove:move];
-                
-                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:YES];
-                if (value < bestValue) {
-                    bestValue = value;
-                    self.chosenMove = move;
+            }
+        
+            [scores addObject:[NSNumber numberWithInt:[self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:NO]]];
+            [moves addObject:moveWrapper];
+        }
+        
+        if (board.isCrossTurn)
+        {
+            int max = 0;
+            int maxIndex = 0;
+            for (NSNumber *number in scores) {
+                if ([number intValue] >= max) {
+                    maxIndex = [scores indexOfObject:number];
+                    max = [number intValue];
                 }
             }
+            
+            self.chosenMove = ((NSValue *)moves[maxIndex]).CGPointValue;
+            return [[scores objectAtIndex:maxIndex] intValue];
+        } else {
+            int min = 0;
+            int minIndex = 0;
+            for (NSNumber *number in scores) {
+                if ([number intValue] <= min) {
+                    minIndex = [scores indexOfObject:number];
+                    min = [number intValue];
+                }
+            }
+            
+            self.chosenMove = ((NSValue *)moves[minIndex]).CGPointValue;
+            return [[scores objectAtIndex:minIndex] intValue];
         }
-        return bestValue;
     }
 }
 
@@ -83,9 +94,9 @@ static int iterations = 0;
 - (NSInteger)scoreForBoard: (Board *) board
 {
     if ([board.winner isEqualToString:@"X"]) {
-        return 100;
+        return 1;
     } else if ([board.winner isEqualToString:@"O"]) {
-        return -100;
+        return -1;
     } else {
         return 0;
     }

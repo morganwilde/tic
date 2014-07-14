@@ -194,14 +194,22 @@
     AI *ai = [[AI alloc] init];
     CGPoint point = [ai nextMoveForBoard:self.board];
     [self.board playCrossMove:point];
-    [self.board playCircleMove:CGPointMake(0, 1)];
-    point = [ai nextMoveForBoard:self.board];
-    [self.board playCrossMove:point];
-    [self.board playCircleMove:CGPointMake(2, 0)];
+    [self.board playCircleMove:CGPointMake(1, 1)];
     NSLog(@"%@", self.board);
     point = [ai nextMoveForBoard:self.board];
     [self.board playCrossMove:point];
-    NSLog(@"%@", self.board);    
+    NSLog(@"%@", self.board);
+    [self.board playCircleMove:CGPointMake(0, 2)];
+    point = [ai nextMoveForBoard:self.board];
+    [self.board playCrossMove:point];
+    NSLog(@"%@", self.board);
+    [self.board playCircleMove:CGPointMake(1, 0)];
+    point = [ai nextMoveForBoard:self.board];
+    [self.board playCrossMove:point];
+    NSLog(@"%@", self.board);
+//    [self.board playCircleMove:CGPointMake(0, 2)];
+//    point = [ai nextMoveForBoard:self.board];
+//    [self.board playCrossMove:point];
 }
 
 #pragma mark - Scoring tests
@@ -215,7 +223,6 @@
     NSLog(@"Score: %i", [self.board scoreForCounter:@"X"]);
     [self.board playCrossMove:CGPointMake(1, 0)];
     NSLog(@"Score: %i", [self.board scoreForCounter:@"X"]);
-
 }
 
 @end

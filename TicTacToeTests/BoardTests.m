@@ -201,13 +201,7 @@
     NSLog(@"%@", self.board);
     point = [ai nextMoveForBoard:self.board];
     [self.board playCrossMove:point];
-    NSLog(@"%@", self.board);
-
-//    [self.board playCrossMove:point];
-//    [self.board playCircleMove:CGPointMake(1, 1)];
-//    point = [ai nextMoveForBoard:self.board];
-//    NSLog(@"point2: %@", NSStringFromCGPoint(point));
-    
+    NSLog(@"%@", self.board);    
 }
 
 #pragma mark - Scoring tests

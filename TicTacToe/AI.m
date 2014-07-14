@@ -20,6 +20,9 @@
 
 - (CGPoint)nextMoveForBoard: (Board *) board
 {
+    if (board.totalMovesPlayed == 0) {
+        return CGPointMake(0, 0);
+    }
     iterations = 0;
     int bestUtility = [self minimaxWithRoot:board withDepth:3 andMaximisingPlayer:YES];
     NSLog(@"Best move: %@", NSStringFromCGPoint(self.chosenMove));

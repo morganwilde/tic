@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E9A64421970013A004AEC82 /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A64411970013A004AEC82 /* TestVC.m */; };
+		2E9A644419700DC7004AEC82 /* Stark.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A644319700DC7004AEC82 /* Stark.OTF */; };
+		2E9A644919700F30004AEC82 /* Folks-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A644619700F30004AEC82 /* Folks-Bold.ttf */; };
+		2E9A644A19700F30004AEC82 /* Folks-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A644719700F30004AEC82 /* Folks-Light.ttf */; };
+		2E9A644B19700F30004AEC82 /* Folks-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A644819700F30004AEC82 /* Folks-Normal.ttf */; };
+		2E9A644D19700FBF004AEC82 /* Fabada-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A644C19700FBF004AEC82 /* Fabada-regular.ttf */; };
+		2E9A644F1970115C004AEC82 /* Aldo PC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A644E1970115C004AEC82 /* Aldo PC.ttf */; };
+		2E9A64511970218B004AEC82 /* GardensC_03_1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A64501970218B004AEC82 /* GardensC_03_1.otf */; };
+		2E9A645A19702D5F004AEC82 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A645919702D5F004AEC82 /* Character.m */; };
+		2E9A645D19702D88004AEC82 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A645C19702D88004AEC82 /* CharacterView.m */; };
 		2ECF2619196E8CD200C48EC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECF2618196E8CD200C48EC1 /* Foundation.framework */; };
 		2ECF261B196E8CD200C48EC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECF261A196E8CD200C48EC1 /* CoreGraphics.framework */; };
 		2ECF261D196E8CD200C48EC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECF261C196E8CD200C48EC1 /* UIKit.framework */; };
@@ -15,7 +25,6 @@
 		2ECF2629196E8CD200C48EC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECF2628196E8CD200C48EC1 /* AppDelegate.m */; };
 		2ECF262C196E8CD200C48EC1 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECF262A196E8CD200C48EC1 /* Main_iPhone.storyboard */; };
 		2ECF262F196E8CD200C48EC1 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECF262D196E8CD200C48EC1 /* Main_iPad.storyboard */; };
-		2ECF2632196E8CD200C48EC1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECF2631196E8CD200C48EC1 /* ViewController.m */; };
 		2ECF2634196E8CD200C48EC1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ECF2633196E8CD200C48EC1 /* Images.xcassets */; };
 		2ECF263B196E8CD200C48EC1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECF263A196E8CD200C48EC1 /* XCTest.framework */; };
 		2ECF263C196E8CD200C48EC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECF2618196E8CD200C48EC1 /* Foundation.framework */; };
@@ -38,6 +47,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E9A64401970013A004AEC82 /* TestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestVC.h; path = Controller/TestVC.h; sourceTree = "<group>"; };
+		2E9A64411970013A004AEC82 /* TestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestVC.m; path = Controller/TestVC.m; sourceTree = "<group>"; };
+		2E9A644319700DC7004AEC82 /* Stark.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = Stark.OTF; path = ../Stark.OTF; sourceTree = "<group>"; };
+		2E9A644619700F30004AEC82 /* Folks-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Folks-Bold.ttf"; sourceTree = "<group>"; };
+		2E9A644719700F30004AEC82 /* Folks-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Folks-Light.ttf"; sourceTree = "<group>"; };
+		2E9A644819700F30004AEC82 /* Folks-Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Folks-Normal.ttf"; sourceTree = "<group>"; };
+		2E9A644C19700FBF004AEC82 /* Fabada-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fabada-regular.ttf"; sourceTree = "<group>"; };
+		2E9A644E1970115C004AEC82 /* Aldo PC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aldo PC.ttf"; sourceTree = "<group>"; };
+		2E9A64501970218B004AEC82 /* GardensC_03_1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GardensC_03_1.otf; sourceTree = "<group>"; };
+		2E9A645819702D5F004AEC82 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = View/Layer/Character.h; sourceTree = "<group>"; };
+		2E9A645919702D5F004AEC82 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Character.m; path = View/Layer/Character.m; sourceTree = "<group>"; };
+		2E9A645B19702D88004AEC82 /* CharacterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterView.h; path = View/CharacterView.h; sourceTree = "<group>"; };
+		2E9A645C19702D88004AEC82 /* CharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharacterView.m; path = View/CharacterView.m; sourceTree = "<group>"; };
 		2ECF2615196E8CD200C48EC1 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECF2618196E8CD200C48EC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2ECF261A196E8CD200C48EC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -50,8 +72,6 @@
 		2ECF2628196E8CD200C48EC1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2ECF262B196E8CD200C48EC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		2ECF262E196E8CD200C48EC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		2ECF2630196E8CD200C48EC1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2ECF2631196E8CD200C48EC1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2ECF2633196E8CD200C48EC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2ECF2639196E8CD200C48EC1 /* TicTacToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECF263A196E8CD200C48EC1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -89,6 +109,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E9A644519700DD2004AEC82 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2E9A64501970218B004AEC82 /* GardensC_03_1.otf */,
+				2E9A644E1970115C004AEC82 /* Aldo PC.ttf */,
+				2E9A644C19700FBF004AEC82 /* Fabada-regular.ttf */,
+				2E9A644619700F30004AEC82 /* Folks-Bold.ttf */,
+				2E9A644719700F30004AEC82 /* Folks-Light.ttf */,
+				2E9A644819700F30004AEC82 /* Folks-Normal.ttf */,
+				2E9A644319700DC7004AEC82 /* Stark.OTF */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		2ECF260C196E8CD200C48EC1 = {
 			isa = PBXGroup;
 			children = (
@@ -125,10 +159,6 @@
 				97A5BBB5196E8E8B00AA4938 /* Model */,
 				2ECF2627196E8CD200C48EC1 /* AppDelegate.h */,
 				2ECF2628196E8CD200C48EC1 /* AppDelegate.m */,
-				2ECF262A196E8CD200C48EC1 /* Main_iPhone.storyboard */,
-				2ECF262D196E8CD200C48EC1 /* Main_iPad.storyboard */,
-				2ECF2630196E8CD200C48EC1 /* ViewController.h */,
-				2ECF2631196E8CD200C48EC1 /* ViewController.m */,
 				2ECF2633196E8CD200C48EC1 /* Images.xcassets */,
 				2ECF261F196E8CD200C48EC1 /* Supporting Files */,
 			);
@@ -138,6 +168,7 @@
 		2ECF261F196E8CD200C48EC1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2E9A644519700DD2004AEC82 /* Fonts */,
 				2ECF2620196E8CD200C48EC1 /* TicTacToe-Info.plist */,
 				2ECF2621196E8CD200C48EC1 /* InfoPlist.strings */,
 				2ECF2624196E8CD200C48EC1 /* main.m */,
@@ -252,8 +283,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E9A644419700DC7004AEC82 /* Stark.OTF in Resources */,
+				2E9A644B19700F30004AEC82 /* Folks-Normal.ttf in Resources */,
+				2E9A644919700F30004AEC82 /* Folks-Bold.ttf in Resources */,
 				2ECF262F196E8CD200C48EC1 /* Main_iPad.storyboard in Resources */,
+				2E9A644D19700FBF004AEC82 /* Fabada-regular.ttf in Resources */,
 				2ECF2634196E8CD200C48EC1 /* Images.xcassets in Resources */,
+				2E9A644F1970115C004AEC82 /* Aldo PC.ttf in Resources */,
+				2E9A64511970218B004AEC82 /* GardensC_03_1.otf in Resources */,
+				2E9A644A19700F30004AEC82 /* Folks-Light.ttf in Resources */,
 				2ECF262C196E8CD200C48EC1 /* Main_iPhone.storyboard in Resources */,
 				2ECF2623196E8CD200C48EC1 /* InfoPlist.strings in Resources */,
 			);
@@ -279,6 +317,13 @@
 				2ECF2629196E8CD200C48EC1 /* AppDelegate.m in Sources */,
 				974A5EED196E8EB400C46D9B /* Board.m in Sources */,
 				2ECF2625196E8CD200C48EC1 /* main.m in Sources */,
+				2ECF2658196E91D800C48EC1 /* GameVC.m in Sources */,
+				2E9A645D19702D88004AEC82 /* CharacterView.m in Sources */,
+				2ECF266A196EBCB400C48EC1 /* CellBackground.m in Sources */,
+				2ECF2655196E914A00C48EC1 /* NavigationVC.m in Sources */,
+				2E9A64421970013A004AEC82 /* TestVC.m in Sources */,
+				2ECF2661196E9E1900C48EC1 /* Colorscheme.m in Sources */,
+				2E9A645A19702D5F004AEC82 /* Character.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

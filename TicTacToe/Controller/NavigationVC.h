@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  NavigationVC.h
 //  TicTacToe
 //
 //  Created by Morgan Wilde on 10/07/2014.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface NavigationVC : UINavigationController
 
 @end

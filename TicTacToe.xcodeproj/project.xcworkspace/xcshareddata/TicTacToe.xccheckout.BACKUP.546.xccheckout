@@ -5,19 +5,29 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>F91B406F-8684-4C56-8316-38FCE62DCB54</string>
+<<<<<<< HEAD
+	<string>A67FDAA3-E087-4BA7-96CA-F4CC869ED2F8</string>
+=======
+	<string>D30F347E-E9A3-49C1-A4C8-3D2BC5760439</string>
+>>>>>>> 88630b0781c7a9a11e13ddc2ceb80c0d2c96865b
 	<key>IDESourceControlProjectName</key>
 	<string>TicTacToe</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>D1ABD661-9CBF-476A-B4B1-520A3209F5BA</key>
+<<<<<<< HEAD
+		<key>2E433996-43E2-4892-A2E8-63F6F1745F79</key>
 		<string>ssh://github.com/morganwilde/tic.git</string>
+=======
+		<key>2C51F7B1-898C-4D3F-8E53-07223CBC5282</key>
+		<string>https://github.com/morganwilde/tic.git</string>
+>>>>>>> 88630b0781c7a9a11e13ddc2ceb80c0d2c96865b
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TicTacToe.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>D1ABD661-9CBF-476A-B4B1-520A3209F5BA</key>
+<<<<<<< HEAD
+		<key>2E433996-43E2-4892-A2E8-63F6F1745F79</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,16 +35,33 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D1ABD661-9CBF-476A-B4B1-520A3209F5BA</string>
+	<string>2E433996-43E2-4892-A2E8-63F6F1745F79</string>
+=======
+		<key>2C51F7B1-898C-4D3F-8E53-07223CBC5282</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/morganwilde/tic.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2C51F7B1-898C-4D3F-8E53-07223CBC5282</string>
+>>>>>>> 88630b0781c7a9a11e13ddc2ceb80c0d2c96865b
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D1ABD661-9CBF-476A-B4B1-520A3209F5BA</string>
+<<<<<<< HEAD
+			<string>2E433996-43E2-4892-A2E8-63F6F1745F79</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TicTacToe</string>
+=======
+			<string>2C51F7B1-898C-4D3F-8E53-07223CBC5282</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tic</string>
+>>>>>>> 88630b0781c7a9a11e13ddc2ceb80c0d2c96865b
 		</dict>
 	</array>
 </dict>

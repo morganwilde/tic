@@ -6,35 +6,36 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>A67FDAA3-E087-4BA7-96CA-F4CC869ED2F8</string>
+	<string>D30F347E-E9A3-49C1-A4C8-3D2BC5760439</string>
 	<key>IDESourceControlProjectName</key>
 	<string>TicTacToe</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2E433996-43E2-4892-A2E8-63F6F1745F79</key>
-		<string>ssh://github.com/morganwilde/tic.git</string>
+		<key>2C51F7B1-898C-4D3F-8E53-07223CBC5282</key>
+		<string>https://github.com/morganwilde/tic.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TicTacToe.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2E433996-43E2-4892-A2E8-63F6F1745F79</key>
+		<key>2C51F7B1-898C-4D3F-8E53-07223CBC5282</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/morganwilde/tic.git</string>
+	<string>https://github.com/morganwilde/tic.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2E433996-43E2-4892-A2E8-63F6F1745F79</string>
+	<string>2C51F7B1-898C-4D3F-8E53-07223CBC5282</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2E433996-43E2-4892-A2E8-63F6F1745F79</string>
+			<string>2C51F7B1-898C-4D3F-8E53-07223CBC5282</string>
 			<key>IDESourceControlWCCName</key>
-			<string>TicTacToe</string>
+			<string>tic</string>
 		</dict>
 	</array>
 </dict>

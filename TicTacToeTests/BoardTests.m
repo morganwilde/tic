@@ -38,22 +38,22 @@
 
 - (void)testPlayCrossMoveToEmptySpace
 {
-    BOOL success = [self.board playCircleMove: CGPointMake(0, 0)];
+    BOOL success = [self.board playCrossMove: CGPointMake(0, 0)];
     XCTAssertTrue(success, @"Move unable to be played into empty space");
     XCTAssertFalse([self.board isTileEmpty:CGPointMake(0, 0)]);
 }
 
 - (void)testPlayCircleMoveToEmptySpace
 {
-    BOOL success = [self.board playCircleMove: CGPointMake(0, 0)];
+    BOOL success = [self.board playCrossMove: CGPointMake(0, 0)];
     XCTAssertTrue(success, @"Move unable to be played into empty space");
     XCTAssertFalse([self.board isTileEmpty:CGPointMake(0, 0)]);
 }
 
 - (void)testPlayMoveToOccupiedSpace
 {
-    [self.board playCircleMove:CGPointMake(0, 0)];
-    BOOL success = [self.board playCrossMove:CGPointMake(0, 0)];
+    [self.board playCrossMove:CGPointMake(0, 0)];
+    BOOL success = [self.board playCircleMove:CGPointMake(0, 0)];
     XCTAssertFalse(success, @"Move played onto occupied space.");
 }
 
@@ -66,10 +66,16 @@
 - (void)testRowWin
 {
     CGPoint point = CGPointMake(0, 0);
+    
+    [self.board playCrossMove:CGPointMake(0, 2)];
     [self.board playCircleMove:point];
     point.x = 1;
+    
+    [self.board playCrossMove:CGPointMake(1, 2)];
     [self.board playCircleMove:point];
     point.x = 2;
+    
+    [self.board playCrossMove:CGPointMake(1, 1)];
     [self.board playCircleMove:point];
     
     BOOL isWinnerCircle = [self.board.winner isEqualToString:@"O"];
@@ -79,10 +85,16 @@
 - (void)testColumnWin
 {
     CGPoint point = CGPointMake(0, 0);
+    
+    [self.board playCrossMove:CGPointMake(1, 0)];
     [self.board playCircleMove:point];
     point.y = 1;
+    
+    [self.board playCrossMove:CGPointMake(1, 1)];
     [self.board playCircleMove:point];
     point.y = 2;
+
+    [self.board playCrossMove:CGPointMake(2, 0)];
     [self.board playCircleMove:point];
     
     BOOL isWinnerCircle = [self.board.winner isEqualToString:@"O"];
@@ -92,15 +104,15 @@
 - (void)testDraw
 {
     [self.board playCrossMove:CGPointMake(0, 0)];
+    [self.board playCircleMove:CGPointMake(1, 1)];
     [self.board playCrossMove:CGPointMake(2, 2)];
+    [self.board playCircleMove:CGPointMake(1, 0)];
     [self.board playCrossMove:CGPointMake(2, 0)];
+    [self.board playCircleMove:CGPointMake(0, 2)];
     [self.board playCrossMove:CGPointMake(1, 2)];
+    [self.board playCircleMove:CGPointMake(2, 1)];
     [self.board playCrossMove:CGPointMake(0, 1)];
     
-    [self.board playCircleMove:CGPointMake(1, 1)];
-    [self.board playCircleMove:CGPointMake(1, 0)];
-    [self.board playCircleMove:CGPointMake(0, 2)];
-    [self.board playCircleMove:CGPointMake(2, 1)];
     
     BOOL isDraw = [self.board.winner isEqualToString:@"DRAW"];
     XCTAssertTrue(isDraw, @"Game was a draw but draw is not set as winner.");
@@ -109,7 +121,9 @@
 - (void)testTopLeftDiagonalWin
 {
     [self.board playCrossMove:CGPointMake(0, 0)];
+    [self.board playCircleMove:CGPointMake(2, 0)];
     [self.board playCrossMove:CGPointMake(1, 1)];
+    [self.board playCircleMove:CGPointMake(0, 2)];
     [self.board playCrossMove:CGPointMake(2, 2)];
     
     XCTAssertTrue([self.board.winner isEqualToString:@"X"], @"Cross won diagonally but winner wasn't correct.");
@@ -117,8 +131,11 @@
 
 - (void)testTopRightDiagonalWin
 {
+    [self.board playCrossMove:CGPointMake(1, 0)];
     [self.board playCircleMove:CGPointMake(2, 0)];
+    [self.board playCrossMove:CGPointMake(1, 2)];
     [self.board playCircleMove:CGPointMake(1, 1)];
+    [self.board playCrossMove:CGPointMake(0, 0)];
     [self.board playCircleMove:CGPointMake(0, 2)];
     
     XCTAssertTrue([self.board.winner isEqualToString:@"O"], @"Circle won diagonally but winner wasn't correct.");
@@ -136,31 +153,56 @@
 - (void)testPossibleMoves
 {
     XCTAssertEqual([[self.board possibleMoves] count], 9, @"Number of initial moves doesn't equal 9.");
-    [self.board playCircleMove:CGPointMake(0, 0)];
-    XCTAssertEqual([[self.board possibleMoves] count], 8, @"Number of moves after a move was played doesn't equal 8");
     [self.board playCrossMove:CGPointMake(0, 0)];
+    XCTAssertEqual([[self.board possibleMoves] count], 8, @"Number of moves after a move was played doesn't equal 8");
 }
 
 - (void)testEndGamePossibleMoves
 {
     [self.board playCrossMove:CGPointMake(0, 0)];
+    [self.board playCircleMove:CGPointMake(1, 1)];
     [self.board playCrossMove:CGPointMake(2, 2)];
+    [self.board playCircleMove:CGPointMake(1, 0)];
     [self.board playCrossMove:CGPointMake(2, 0)];
+    [self.board playCircleMove:CGPointMake(0, 2)];
     [self.board playCrossMove:CGPointMake(1, 2)];
+    [self.board playCircleMove:CGPointMake(2, 1)];
     [self.board playCrossMove:CGPointMake(0, 1)];
     
-    [self.board playCircleMove:CGPointMake(1, 1)];
-    [self.board playCircleMove:CGPointMake(1, 0)];
-    [self.board playCircleMove:CGPointMake(0, 2)];
-    [self.board playCircleMove:CGPointMake(2, 1)];
-    
     XCTAssertEqual([[self.board possibleMoves] count], 0, @"Number of moves for complete game is not 0.");
+}
+
+- (void)testCantPlayTwoMoves
+{
+    [self.board playCrossMove:CGPointMake(0, 0)];
+    BOOL success = [self.board playCrossMove:CGPointMake(0, 0)];
+    XCTAssertFalse(success, @"Allowed to play two moves in a row for the same counter.");
+}
+
+- (void)testfirstMoveIsCross
+{
+    BOOL success = [self.board playCircleMove:CGPointMake(0, 0)];
+    XCTAssertFalse(success, @"Circle could play first.");
+    
+    self.board = [[Board alloc] init];
+    success = [self.board playCrossMove:CGPointMake(0, 0)];
+    XCTAssertTrue(success, @"Cross couldn't play first.");
 }
 
 - (void)testAI
 {
     AI *ai = [[AI alloc] init];
-    CGPoint point = [ai nextMoveForBoard:[self.board copy]];
+    CGPoint point = [ai nextMoveForBoard:self.board];
+    [self.board playCrossMove:point];
+    [self.board playCircleMove:CGPointMake(0, 1)];
+    point = [ai nextMoveForBoard:self.board];
+    [self.board playCrossMove:point];
+    [self.board playCircleMove:CGPointMake(2, 0)];
+    NSLog(@"%@", self.board);
+    point = [ai nextMoveForBoard:self.board];
+    [self.board playCrossMove:point];
+    NSLog(@"%@", self.board);
+
 //    [self.board playCrossMove:point];
 //    [self.board playCircleMove:CGPointMake(1, 1)];
 //    point = [ai nextMoveForBoard:self.board];
@@ -168,4 +210,20 @@
     
 }
 
+#pragma mark - Scoring tests
+- (void)testScore
+{
+    [self.board playCrossMove:CGPointMake(1, 1)];
+    [self.board playCircleMove:CGPointMake(0, 0)];
+    [self.board playCrossMove:CGPointMake(0, 2)];
+    [self.board playCircleMove:CGPointMake(2, 0)];
+    NSLog(@"Board: %@", self.board);
+    NSLog(@"Score: %i", [self.board scoreForCounter:@"X"]);
+    [self.board playCrossMove:CGPointMake(1, 0)];
+    NSLog(@"Score: %i", [self.board scoreForCounter:@"X"]);
+
+}
+
 @end
+
+

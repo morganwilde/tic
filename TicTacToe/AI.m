@@ -20,58 +20,54 @@
 
 - (CGPoint)nextMoveForBoard: (Board *) board
 {
+    iterations = 0;
     int bestUtility = [self minimaxWithRoot:board withDepth:3 andMaximisingPlayer:YES];
     NSLog(@"Best move: %@", NSStringFromCGPoint(self.chosenMove));
+    NSLog(@"iterations: %i", iterations);
     return self.chosenMove;
 }
 
 static int iterations = 0;
-static int backups = 0;
 - (NSInteger) minimaxWithRoot:(Board *) board withDepth: (NSInteger) depth andMaximisingPlayer: (BOOL) maxPlayer
 {
     iterations = iterations + 1;
-    NSLog(@"%@", board);
-    NSLog(@"board count: %i, gameover: %i", [[board possibleMoves] count], board.gameOver);
+    
     if (board.gameOver || [[board possibleMoves] count] == 0) {
-        NSLog(@"Iterations: %i", iterations);
-        NSLog(@"backups: %i", backups);
-        return [self scoreForBoard:board];
+        int score = [self scoreForBoard:board];
+        return score;
     } else {
         int bestValue = 0;
         if (maxPlayer)
         {
-            bestValue = -100;
-//            NSLog(@"%i", [[board possibleMoves] count]);
+            bestValue = -10000;
             for (NSValue *moveWrapper in [board possibleMoves]) {
                 CGPoint move = moveWrapper.CGPointValue;
-            
-                [board playCrossMove:move];
-
-                int value = [self minimaxWithRoot:[board copy] withDepth:depth - 1 andMaximisingPlayer:NO];
+                
+                Board *newBoard = [board copy];
+                [newBoard playCrossMove:move];
+                
+                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:NO];
                 if (value > bestValue) {
                     bestValue = value;
                     self.chosenMove = move;
                 }
             }
-            backups = backups + 1;
-            return bestValue;
         } else {
-            bestValue = 100;
-//            NSLog(@"%i", [[board possibleMoves] count]);
+            bestValue = 10000;
             for (NSValue *moveWrapper in [board possibleMoves]) {
                 CGPoint move = moveWrapper.CGPointValue;
                 
-                [board playCircleMove:move];
+                Board *newBoard = [board copy];
+                [newBoard playCircleMove:move];
                 
-                int value = [self minimaxWithRoot:[board copy] withDepth:depth - 1 andMaximisingPlayer:YES];
+                int value = [self minimaxWithRoot:newBoard withDepth:depth - 1 andMaximisingPlayer:YES];
                 if (value < bestValue) {
                     bestValue = value;
                     self.chosenMove = move;
                 }
             }
-            backups = backups + 1;
-            return bestValue;
         }
+        return bestValue;
     }
 }
 
@@ -84,13 +80,13 @@ static int backups = 0;
 - (NSInteger)scoreForBoard: (Board *) board
 {
     if ([board.winner isEqualToString:@"X"]) {
-        NSLog(@"%@", board);
-        return 10;
+        return 100;
     } else if ([board.winner isEqualToString:@"O"]) {
-        return -10;
+        return -100;
     } else {
         return 0;
     }
+//    return [board scoreForCounter:@"X"];
 }
 
 

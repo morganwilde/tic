@@ -273,7 +273,7 @@
     }
 
     animation.fromValue = [NSNumber numberWithDouble:from];
-    animation.toValue   = [NSNumber numberWithDouble:to/2];
+    animation.toValue   = [NSNumber numberWithDouble:to];
     [cell addAnimation:animation forKey:key];
 }
 

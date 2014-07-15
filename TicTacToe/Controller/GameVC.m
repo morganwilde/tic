@@ -30,7 +30,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.view.backgroundColor = [Colorscheme blueMellowColor];
+    self.view.backgroundColor = [Colorscheme darkPurpleColor];
     //self.view.backgroundColor = [Colorscheme colorBackground];
 }
 
@@ -88,7 +88,8 @@
         self.playerSymbol = ZZGridOccupantX;
     }
     /* Check for merge opportunities */
-    [self mergeIfAdjacentTo:cell];
+    //[cell animateWinningCell];
+    //[self mergeIfAdjacentTo:cell];
 }
 
 - (void)mergeIfAdjacentTo:(GridCell *)cell

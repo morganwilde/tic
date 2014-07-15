@@ -52,9 +52,9 @@
     
     /* Colors */
     if (self.symbol == ZZSymbolTypeX) {
-        [[Colorscheme colorGridCellActiveForegroundOne] setStroke];
+        [[Colorscheme darkPurpleColor] setStroke];
     } else if (self.symbol == ZZSymbolTypeO) {
-        [[Colorscheme colorGridCellActiveForegroundTwo] setStroke];
+        [[Colorscheme darkPurpleColor] setStroke];
     }
     
     /* Color the path */

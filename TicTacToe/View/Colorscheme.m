@@ -24,6 +24,11 @@ UIColor *colorWith(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha) { re
 + (UIColor *)colorBackground { return colorWith(45, 41, 76, 1); }
 + (UIColor *)blueMellowColor { return colorWith(89, 157, 186, 1.0); }
 + (UIColor *)chalkboardBlackColor { return colorWith(65, 65, 65, 1); }
+// Old colorscheme
++ (UIColor *)darkPurpleColor { return colorWith(36, 38, 63, 1); }
++ (UIColor *)blackPurpleColor { return colorWith(48, 51, 77, 1); }
++ (UIColor *)brightGreenColor { return colorWith(131, 255, 0, 1); }
++ (UIColor *)brightYellowColor { return colorWith(199, 255, 1, 1); }
 /* Foreground colors */
 + (UIColor *)lightGrayColor { return colorWith(216, 216, 216, 1); }
 + (UIColor *)darkGrayColor { return colorWith(175, 175, 175, 1); }

@@ -32,7 +32,7 @@
         
         /* Background layer setup */
         self.backgroundColor = [UIColor clearColor];
-        self.colorBack = [Colorscheme colorGridCellInactive];
+        self.colorBack = [Colorscheme blackPurpleColor];
         [self.layer addSublayer: self.backgroundLayer];
         [self.backgroundLayer setNeedsDisplay];
         
@@ -75,16 +75,16 @@
     switch (state) {
         case ZZGridOccupantX:
             self.occupant = ZZGridOccupantX;
-            self.colorBack = [Colorscheme colorGridCellActiveOne];
+            self.colorBack = [Colorscheme brightGreenColor];
             self.symbolX.hidden = NO;
             break;
         case ZZGridOccupantO:
             self.occupant = ZZGridOccupantO;
-            self.colorBack = [Colorscheme colorGridCellActiveTwo];
+            self.colorBack = [Colorscheme brightYellowColor];
             self.symbolO.hidden = NO;
             break;
         default:
-            self.colorBack = [Colorscheme colorGridCellInactive];
+            self.colorBack = [Colorscheme blackPurpleColor];
             break;
     }
 }
@@ -120,6 +120,22 @@
     }
     [self setNeedsDisplay];
     self.mergeDirections |= direction;
+}
+- (void)animateWinningCell
+{
+    [UIView animateWithDuration:1.0
+                          delay:0
+         usingSpringWithDamping:0.2
+          initialSpringVelocity:0.15
+                        options:UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{
+                         self.transform = CGAffineTransformMakeScale(1.2, 1.2);
+                     }
+                     completion:^(BOOL finished){
+                         if (finished) {
+                             NSLog(@"done");
+                         }
+                     }];
 }
 #pragma mark - Actions
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

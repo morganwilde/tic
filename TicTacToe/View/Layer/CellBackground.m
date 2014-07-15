@@ -59,7 +59,7 @@
                                          sizeW,
                                          sizeH + self.expandTop + self.expandBottom);
     
-    const CGFloat cornerRadius = horizontalRect.size.width / 2.0;
+    const CGFloat cornerRadius = 20;//horizontalRect.size.width / 2.0;
     
     UIBezierPath *backHorizontal = [UIBezierPath bezierPathWithRoundedRect:horizontalRect
                                                               cornerRadius:cornerRadius];

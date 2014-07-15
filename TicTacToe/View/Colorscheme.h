@@ -25,4 +25,9 @@
 + (UIColor *)lightGrayColor;
 + (UIColor *)darkGrayColor;
 
++ (UIColor *)darkPurpleColor;
++ (UIColor *)blackPurpleColor;
++ (UIColor *)brightGreenColor;
++ (UIColor *)brightYellowColor;
+
 @end

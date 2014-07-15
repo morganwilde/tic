@@ -16,11 +16,31 @@
                     <view key="view" contentMode="scaleToFill" id="yAC-ex-3yB">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwq-Hs-wDu">
+                                <rect key="frame" x="209" y="408" width="350" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Practice">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHX-47-qZT">
+                                <rect key="frame" x="209" y="516" width="350" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="IPT-oV-Evv"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <segue destination="S8S-S9-1dQ" kind="modal" identifier="seguePlay" id="5BN-YA-j4c"/>
+                        <outlet property="playButton" destination="HHX-47-qZT" id="zEl-yt-q9j"/>
+                        <outlet property="practiceButton" destination="uwq-Hs-wDu" id="xtS-qr-EfV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qc5-XH-Ihb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -39,6 +59,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPj-ng-UT3">
+                                <rect key="frame" x="209" y="904" width="350" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNB-6G-O9o">
                                 <rect key="frame" x="84" y="212" width="600" height="600"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,35 +88,12 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="gridContainer" destination="pNB-6G-O9o" id="5Sc-1T-bCS"/>
-                        <segue destination="eQN-bM-bRk" kind="push" identifier="segueScore" id="U60-9T-8zu"/>
+                        <outlet property="resetButton" destination="VPj-ng-UT3" id="FG2-Dg-D7b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KT5-nR-bZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1470" y="-199"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="FVV-58-AeA">
-            <objects>
-                <viewController id="eQN-bM-bRk" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xBS-2W-76Q"/>
-                        <viewControllerLayoutGuide type="bottom" id="yLh-Ff-MIb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="n4T-Sz-Lvp">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="lt0-bW-sKd"/>
-                    <connections>
-                        <segue destination="S8S-S9-1dQ" kind="push" id="jUY-dx-7Bt"/>
-                        <segue destination="Wfr-LH-GVX" kind="push" id="FOO-9C-aWV"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HL8-tV-TKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2327" y="-199"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -96,7 +101,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="5BN-YA-j4c"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@
 @interface GameVC ()
 
 @property (strong, nonatomic) IBOutlet UIView *gridContainer;
+@property (strong, nonatomic) IBOutlet UIButton *resetButton;
 @property (strong, nonatomic) AI *ai;
 @property (strong, nonatomic) Board *board;
 
@@ -43,11 +44,32 @@
         // Instantiate AI
         self.ai = [[AI alloc] init];
         self.board = [[Board alloc] init];
+        
         CGRect rect = CGRectMake(84, 212, 600, 600);
         self.gridContainer = [[UIView alloc] initWithFrame:rect];
+        
+        CGRect rectButton = CGRectMake(209, 904, 350, 100);
+        self.resetButton = [[UIButton alloc] initWithFrame:rectButton];
+        [self.resetButton setTitle:@"Reset" forState:UIControlStateNormal];
+        self.resetButton.titleLabel.font     = [UIFont fontWithName:@"Fabada" size:44];
+        [self.resetButton setTitleColor:[Colorscheme lightGrayColor] forState:UIControlStateNormal];
+        [self.resetButton addTarget:self action:@selector(resetBoard) forControlEvents:UIControlEventTouchUpInside];
+        self.resetButton.backgroundColor = [Colorscheme blackPurpleColor];
+        self.resetButton.layer.cornerRadius = 20;
+        
         [self.view addSubview:self.gridContainer];
+        [self.view addSubview:self.resetButton];
     }
     return self;
+}
+
+- (void)resetBoard
+{
+    self.ai = [[AI alloc] init];
+    self.board = [[Board alloc] init];
+    [self resetGrid];
+    [self animateCellsIntoView];
+    [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
 }
 
 - (void)viewWillAppear:(BOOL)animated

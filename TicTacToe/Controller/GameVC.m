@@ -13,7 +13,9 @@
 
 @interface GameVC ()
 
-@property (weak, nonatomic) IBOutlet UIView *gridContainer;
+@property (strong, nonatomic) IBOutlet UIView *gridContainer;
+@property (strong, nonatomic) IBOutlet UIButton *resetButton;
+
 @property (strong, nonatomic) AI *ai;
 @property (strong, nonatomic) Board *board;
 @property (strong, nonatomic) Activity *gameActivity;
@@ -37,6 +39,43 @@
         self.isMultiplayer = YES;
     }
     return self;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.gridWidth = 3;
+        self.gridHeight = 3;
+        // Instantiate AI
+        self.ai = [[AI alloc] init];
+        self.board = [[Board alloc] init];
+        
+        CGRect rect = CGRectMake(84, 212, 600, 600);
+        self.gridContainer = [[UIView alloc] initWithFrame:rect];
+        
+        CGRect rectButton = CGRectMake(209, 904, 350, 100);
+        self.resetButton = [[UIButton alloc] initWithFrame:rectButton];
+        [self.resetButton setTitle:@"Reset" forState:UIControlStateNormal];
+        self.resetButton.titleLabel.font     = [UIFont fontWithName:@"Fabada" size:44];
+        [self.resetButton setTitleColor:[Colorscheme lightGrayColor] forState:UIControlStateNormal];
+        [self.resetButton addTarget:self action:@selector(resetBoard) forControlEvents:UIControlEventTouchUpInside];
+        self.resetButton.backgroundColor = [Colorscheme blackPurpleColor];
+        self.resetButton.layer.cornerRadius = 20;
+        
+        [self.view addSubview:self.gridContainer];
+        [self.view addSubview:self.resetButton];
+    }
+    return self;
+}
+
+- (void)resetBoard
+{
+    self.ai = [[AI alloc] init];
+    self.board = [[Board alloc] init];
+    [self resetGrid];
+    [self animateCellsIntoView];
+    [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
 }
 
 #pragma mark - View lifecycle
@@ -71,34 +110,38 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self animateCellsIntoView];
     if (!self.isMultiplayer) {
-        [self AIDidPlay];
+        [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
     }
 }
 
 - (void)viewWillLayoutSubviews
 {
-    /* Reset the grid */
-    [self.grid removeAllObjects];
-    self.playerSymbol = ZZPlayerSymbolX;
-    /* Create the grid */
-    CGFloat padding = 20;
-    CGFloat cellWidth = (self.gridContainer.frame.size.width - 2*padding) / self.gridWidth;
-    CGFloat cellHeight = (self.gridContainer.frame.size.height - 2*padding) / self.gridHeight;
-    CGFloat paddingLeft = padding;
-    CGFloat paddingTop = padding;
-    
-    for (int i = 0; i < self.gridHeight; i++) {
-        for (int j = 0; j < self.gridWidth; j++) {
-            CGRect frame = CGRectMake(paddingLeft, paddingTop, cellWidth, cellHeight);
-            paddingLeft += cellWidth;
-            GridCell *cell = [[GridCell alloc] initWithFrame:frame positionX:j Y:i];
-            cell.parentVC = self;
-            [self.gridContainer addSubview:cell];
-            [self.grid addObject:cell];
+    [self resetGrid];
+}
+
+#pragma mark - Animate cells
+- (void)animateCellsIntoView
+{
+    if ([self.grid count]) {
+        for (int i = 0; i < self.gridHeight; i++) {
+            for (int j = 0; j < self.gridWidth; j++) {
+                GridCell *cell = [self getGridCellX:j Y:i];
+                [cell animateCellIntoView];
+            }
         }
-        paddingTop += cellHeight;
-        paddingLeft = padding;
+    }
+}
+- (void)animateCellsOutOfView
+{
+    if ([self.grid count]) {
+        for (int i = 0; i < self.gridHeight; i++) {
+            for (int j = 0; j < self.gridWidth; j++) {
+                GridCell *cell = [self getGridCellX:j Y:i];
+                [cell animateCellOutOfView];
+            }
+        }
     }
 }
 
@@ -164,22 +207,8 @@
             if (success) {
                 [cell activate:ZZGridOccupantO];
                 self.playerSymbol = ZZGridOccupantX;
-                if (!self.isMultiplayer) {
-                    [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
-                } else {
-                    Action *action = [[Action alloc] init];
-                    action.name = @"MOVE";
-                    action.activity = self.gameActivity;
-//                    [action setObject:[NSString stringWithFormat:@"%f", move.x] forKey:@"moveX"];
-//                    [action setObject:[NSString stringWithFormat:@"%f", move.y] forKey:@"moveY"];
-                    action.score = move.x;
-                    action.duration = move.y;
-                    [self.sdk updateAction:action];
-                    NSLog(@"Logging action");
-                    [self.sdk logAction:action];
-                }
+                [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
                 [self movePlayed];
-                self.isMyTurn = NO;
             }
         }
     }
@@ -296,6 +325,38 @@
         NSLog(@"merge left");
         [left merge:ZZGridCellMergeDirectionRight];
         [cell merge:ZZGridCellMergeDirectionLeft];
+    }
+}
+
+- (void)resetGrid
+{
+    /* Reset the grid */
+    //[self animateCellsOutOfView];
+    [self.grid removeAllObjects];
+    NSArray *subviews = [self.gridContainer subviews];
+    for (UIView *view in subviews) {
+        [view removeFromSuperview];
+    }
+    self.playerSymbol = ZZPlayerSymbolX;
+    /* Create the grid */
+    CGFloat padding = 20;
+    CGFloat cellWidth = (self.gridContainer.frame.size.width - 2*padding) / self.gridWidth;
+    CGFloat cellHeight = (self.gridContainer.frame.size.height - 2*padding) / self.gridHeight;
+    CGFloat paddingLeft = padding;
+    CGFloat paddingTop = padding;
+    
+    for (int i = 0; i < self.gridHeight; i++) {
+        for (int j = 0; j < self.gridWidth; j++) {
+            CGRect frame = CGRectMake(paddingLeft, paddingTop, cellWidth, cellHeight);
+            paddingLeft += cellWidth;
+            GridCell *cell = [[GridCell alloc] initWithFrame:frame positionX:j Y:i];
+            cell.parentVC = self;
+            cell.transform = CGAffineTransformMakeScale(0, 0);
+            [self.gridContainer addSubview:cell];
+            [self.grid addObject:cell];
+        }
+        paddingTop += cellHeight;
+        paddingLeft = padding;
     }
 }
 

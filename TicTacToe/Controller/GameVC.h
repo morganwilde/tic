@@ -30,5 +30,6 @@ typedef enum ZZPlayerSymbol {
 
 - (GridCell *)getGridCellX:(int)x Y:(int)y;
 - (void)touchReceivedFor:(GridCell *)cell;
+- (void)resetGrid;
 
 @end

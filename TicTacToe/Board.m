@@ -12,7 +12,6 @@
 
 @interface Board()
 @property (nonatomic, strong) NSMutableArray *boardArray;
-@property (nonatomic) BOOL isCrossTurn;
 
 - (BOOL)playMove:(CGPoint)move forCounter:(NSString *)counter;
 - (BOOL)checkRow: (NSInteger) row;

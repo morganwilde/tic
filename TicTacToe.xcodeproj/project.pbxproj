@@ -45,6 +45,7 @@
 		97210AB0196EA468004B8BFD /* BoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97210AAF196EA468004B8BFD /* BoardTests.m */; };
 		97210AB3196ED3D9004B8BFD /* AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 97210AB2196ED3D9004B8BFD /* AI.m */; };
 		974A5EED196E8EB400C46D9B /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 974A5EEC196E8EB400C46D9B /* Board.m */; };
+		9796CD031974457C00540AF9 /* PlatformSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9796CD021974457C00540AF9 /* PlatformSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		97210AB2196ED3D9004B8BFD /* AI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI.m; sourceTree = "<group>"; };
 		974A5EEB196E8EB400C46D9B /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		974A5EEC196E8EB400C46D9B /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
+		9796CD021974457C00540AF9 /* PlatformSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PlatformSDK.framework; path = "../Library/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts/PlatformSDK.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9796CD031974457C00540AF9 /* PlatformSDK.framework in Frameworks */,
 				2ECF261B196E8CD200C48EC1 /* CoreGraphics.framework in Frameworks */,
 				2ECF261D196E8CD200C48EC1 /* UIKit.framework in Frameworks */,
 				2ECF2619196E8CD200C48EC1 /* Foundation.framework in Frameworks */,
@@ -219,6 +222,7 @@
 		2ECF260C196E8CD200C48EC1 = {
 			isa = PBXGroup;
 			children = (
+				9796CD021974457C00540AF9 /* PlatformSDK.framework */,
 				2ECF261E196E8CD200C48EC1 /* TicTacToe */,
 				2ECF2640196E8CD200C48EC1 /* TicTacToeTests */,
 				2ECF2617196E8CD200C48EC1 /* Frameworks */,
@@ -560,14 +564,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Howell (2G6KCE7SYJ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicTacToe/TicTacToe-Prefix.pch";
 				INFOPLIST_FILE = "TicTacToe/TicTacToe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -577,14 +585,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Howell (2G6KCE7SYJ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicTacToe/TicTacToe-Prefix.pch";
 				INFOPLIST_FILE = "TicTacToe/TicTacToe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

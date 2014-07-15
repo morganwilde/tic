@@ -24,7 +24,7 @@
         return CGPointMake(0, 0);
     }
     iterations = 0;
-    int bestUtility = [self minimaxWithRoot:board withDepth:300 andMaximisingPlayer:YES];
+    [self minimaxWithRoot:board withDepth:300 andMaximisingPlayer:YES];
     NSLog(@"Best move: %@", NSStringFromCGPoint(self.chosenMove));
     NSLog(@"iterations: %i", iterations);
     return self.chosenMove;

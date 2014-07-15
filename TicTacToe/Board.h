@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL gameOver;
 @property (nonatomic) BOOL isCrossTurn;
 
+
 - (id) init;
 
 #pragma mark - Moving
@@ -22,9 +23,10 @@
 
 #pragma mark - Querying
 - (NSString *)counterAtPoint:(CGPoint)point;
-- (BOOL)isTileEmpty: (CGPoint) point;
+- (BOOL)isTileEmpty:(CGPoint) point;
 - (NSArray *)possibleMoves;
 - (int) scoreForCounter: (NSString *) counter;
+- (NSArray *)winningMoves;
 
 #pragma mark - Description
 - (NSString *) description;

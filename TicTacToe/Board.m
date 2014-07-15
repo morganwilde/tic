@@ -12,6 +12,7 @@
 
 @interface Board()
 @property (nonatomic, strong) NSMutableArray *boardArray;
+@property (nonatomic, strong) NSArray *winningMovesArray;
 
 - (BOOL)playMove:(CGPoint)move forCounter:(NSString *)counter;
 - (BOOL)checkRow: (NSInteger) row;
@@ -30,6 +31,7 @@
         }
         self.totalMovesPlayed = 0;
         self.winner = @"NONE";
+        self.winningMovesArray = [NSArray new];
         self.gameOver = NO;
         self.isCrossTurn = YES;
     }
@@ -248,6 +250,11 @@
     return score;
 }
 
+- (NSArray *)winningMoves
+{
+    return self.winningMovesArray;
+}
+
 #pragma mark - Win checking
 - (void)checkWinner
 {
@@ -288,15 +295,18 @@
     }
     
     BOOL winner = YES;
+    NSMutableArray *moves = [NSMutableArray new];
     for (int column = 0; column < BOARD_WIDTH; column++) {
         point.x = column;
         NSString *tile = (NSString *) self.boardArray[[self map:point]];
+        [moves addObject:[NSValue valueWithCGPoint:point]];
         if (![tile isEqualToString: firstTile]) {
             winner = NO;
         }
     }
     if (winner) {
         self.winner = firstTile;
+        self.winningMovesArray = moves;
     }
     return winner;
 }
@@ -310,15 +320,18 @@
     }
     
     BOOL winner = YES;
+    NSMutableArray *moves = [NSMutableArray new];
     for (int row = 0; row < BOARD_HEIGHT; row++) {
         point.y = row;
         NSString *tile = (NSString *) self.boardArray[[self map:point]];
+        [moves addObject:[NSValue valueWithCGPoint:point]];
         if (![tile isEqualToString: firstTile]) {
             winner = NO;
         }
     }
     if (winner) {
         self.winner = firstTile;
+        self.winningMovesArray = moves;
     }
     return winner;
 }
@@ -331,14 +344,17 @@
     }
     
     BOOL winner = YES;
+    NSMutableArray *moves = [NSMutableArray new];
     for (int x = 0, y = 0; x < BOARD_HEIGHT && y < BOARD_WIDTH; x++, y++) {
         CGPoint point = CGPointMake(x, y);
         NSString *tile = (NSString *) self.boardArray[[self map:point]];
+        [moves addObject:[NSValue valueWithCGPoint:point]];
         if (![tile isEqualToString:firstTile]) {
             return NO;
         }
     }
     self.winner = firstTile;
+    self.winningMovesArray = moves;
     return winner;
 }
 
@@ -350,14 +366,17 @@
     }
     
     BOOL winner = YES;
+    NSMutableArray *moves = [NSMutableArray new];
     for (int x = 2, y = 0; x < BOARD_HEIGHT && y < BOARD_WIDTH; x--, y++) {
         CGPoint point = CGPointMake(x, y);
         NSString *tile = (NSString *) self.boardArray[[self map:point]];
+        [moves addObject:[NSValue valueWithCGPoint:point]];
         if (![tile isEqualToString:firstTile]) {
             return NO;
         }
     }
     self.winner = firstTile;
+    self.winningMovesArray = moves;
     return winner;
 }
 

@@ -13,7 +13,7 @@
 
 @interface GameVC ()
 
-@property (weak, nonatomic) IBOutlet UIView *gridContainer;
+@property (strong, nonatomic) IBOutlet UIView *gridContainer;
 @property (strong, nonatomic) AI *ai;
 @property (strong, nonatomic) Board *board;
 
@@ -34,19 +34,63 @@
     return self;
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.gridWidth = 3;
+        self.gridHeight = 3;
+        // Instantiate AI
+        self.ai = [[AI alloc] init];
+        self.board = [[Board alloc] init];
+        CGRect rect = CGRectMake(84, 212, 600, 600);
+        self.gridContainer = [[UIView alloc] initWithFrame:rect];
+        [self.view addSubview:self.gridContainer];
+    }
+    return self;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.view.backgroundColor = [Colorscheme darkPurpleColor];
-    //self.view.backgroundColor = [Colorscheme colorBackground];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self AIDidPlay];
+    [self animateCellsIntoView];
+    [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
+}
+- (void)viewWillLayoutSubviews
+{
+    [self resetGrid];
 }
 
+#pragma mark - Animate cells
+- (void)animateCellsIntoView
+{
+    if ([self.grid count]) {
+        for (int i = 0; i < self.gridHeight; i++) {
+            for (int j = 0; j < self.gridWidth; j++) {
+                GridCell *cell = [self getGridCellX:j Y:i];
+                [cell animateCellIntoView];
+            }
+        }
+    }
+}
+- (void)animateCellsOutOfView
+{
+    if ([self.grid count]) {
+        for (int i = 0; i < self.gridHeight; i++) {
+            for (int j = 0; j < self.gridWidth; j++) {
+                GridCell *cell = [self getGridCellX:j Y:i];
+                [cell animateCellOutOfView];
+            }
+        }
+    }
+}
+#pragma mark - Player actions
 - (void)AIDidPlay
 {
     CGPoint move = [self.ai nextMoveForBoard:self.board];
@@ -73,10 +117,15 @@
     }
 }
 
-- (void)viewWillLayoutSubviews
+- (void)resetGrid
 {
     /* Reset the grid */
+    //[self animateCellsOutOfView];
     [self.grid removeAllObjects];
+    NSArray *subviews = [self.gridContainer subviews];
+    for (UIView *view in subviews) {
+        [view removeFromSuperview];
+    }
     self.playerSymbol = ZZPlayerSymbolX;
     /* Create the grid */
     CGFloat padding = 20;
@@ -91,6 +140,7 @@
             paddingLeft += cellWidth;
             GridCell *cell = [[GridCell alloc] initWithFrame:frame positionX:j Y:i];
             cell.parentVC = self;
+            cell.transform = CGAffineTransformMakeScale(0, 0);
             [self.gridContainer addSubview:cell];
             [self.grid addObject:cell];
         }
@@ -131,35 +181,6 @@
             [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
             [self movePlayed];
         }
-    }
-}
-
-- (void)mergeIfAdjacentTo:(GridCell *)cell
-{
-    GridCell *top       = [self getGridCellX:cell.positionX     Y:cell.positionY - 1];
-    GridCell *right     = [self getGridCellX:cell.positionX + 1 Y:cell.positionY];
-    GridCell *bottom    = [self getGridCellX:cell.positionX     Y:cell.positionY + 1];
-    GridCell *left      = [self getGridCellX:cell.positionX - 1 Y:cell.positionY];
-    
-    if (top.occupant == cell.occupant) {
-        NSLog(@"merge top");
-        [top merge:ZZGridCellMergeDirectionBottom];
-        [cell merge:ZZGridCellMergeDirectionTop];
-    }
-    if (right.occupant == cell.occupant) {
-        NSLog(@"merge right");
-        [right merge:ZZGridCellMergeDirectionLeft];
-        [cell merge:ZZGridCellMergeDirectionRight];
-    }
-    if (bottom.occupant == cell.occupant) {
-        NSLog(@"merge bottom");
-        [bottom merge:ZZGridCellMergeDirectionTop];
-        [cell merge:ZZGridCellMergeDirectionBottom];
-    }
-    if (left.occupant == cell.occupant) {
-        NSLog(@"merge left");
-        [left merge:ZZGridCellMergeDirectionRight];
-        [cell merge:ZZGridCellMergeDirectionLeft];
     }
 }
 

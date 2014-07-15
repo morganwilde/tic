@@ -1,53 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="S8S-S9-1dQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Wfr-LH-GVX">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--NavigationVC-->
-        <scene sceneID="OUg-i0-teB">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="kGX-H6-9k3" customClass="NavigationVC" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tjD-OD-r3F">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="6de-uj-BPe" kind="relationship" relationship="rootViewController" id="tBq-So-3Vw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5f1-9p-FRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-511" y="-199"/>
-        </scene>
         <!--IntroVC-->
-        <scene sceneID="hAu-NA-u81">
+        <scene sceneID="8AY-gd-oMB">
             <objects>
-                <viewController id="6de-uj-BPe" customClass="IntroVC" sceneMemberID="viewController">
+                <viewController id="Wfr-LH-GVX" customClass="IntroVC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="80P-4c-T2c"/>
-                        <viewControllerLayoutGuide type="bottom" id="6su-65-D7a"/>
+                        <viewControllerLayoutGuide type="top" id="nwF-Q4-4NA"/>
+                        <viewControllerLayoutGuide type="bottom" id="sRH-bN-Wp7"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zAY-bW-9il">
+                    <view key="view" contentMode="scaleToFill" id="yAC-ex-3yB">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRR-8d-4Zy">
-                                <rect key="frame" x="346" y="488" width="77" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Play">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Hfg-uf-Syn"/>
+                    <navigationItem key="navigationItem" id="IPT-oV-Evv"/>
+                    <connections>
+                        <segue destination="S8S-S9-1dQ" kind="modal" identifier="seguePlay" id="5BN-YA-j4c"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rbt-ye-jQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qc5-XH-Ihb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="-199"/>
+            <point key="canvasLocation" x="551" y="-201"/>
         </scene>
         <!--GameVC-->
         <scene sceneID="J6d-fD-Nls">
@@ -82,30 +60,35 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="gridContainer" destination="pNB-6G-O9o" id="5Sc-1T-bCS"/>
+                        <segue destination="eQN-bM-bRk" kind="push" identifier="segueScore" id="U60-9T-8zu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KT5-nR-bZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1470" y="-199"/>
         </scene>
-        <!--DisplayVC-->
-        <scene sceneID="lio-TX-xyD">
+        <!--View Controller-->
+        <scene sceneID="FVV-58-AeA">
             <objects>
-                <viewController id="CWR-IB-ahk" customClass="DisplayVC" sceneMemberID="viewController">
+                <viewController id="eQN-bM-bRk" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GEA-QZ-rUa"/>
-                        <viewControllerLayoutGuide type="bottom" id="g3Z-FH-2Gj"/>
+                        <viewControllerLayoutGuide type="top" id="xBS-2W-76Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="yLh-Ff-MIb"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JlS-vZ-iUi">
+                    <view key="view" contentMode="scaleToFill" id="n4T-Sz-Lvp">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <nil key="simulatedStatusBarMetrics"/>
+                    <navigationItem key="navigationItem" id="lt0-bW-sKd"/>
+                    <connections>
+                        <segue destination="S8S-S9-1dQ" kind="push" id="jUY-dx-7Bt"/>
+                        <segue destination="Wfr-LH-GVX" kind="push" id="FOO-9C-aWV"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GhC-sm-DeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HL8-tV-TKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1470" y="965"/>
+            <point key="canvasLocation" x="2327" y="-199"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -113,4 +96,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="5BN-YA-j4c"/>
+    </inferredMetricsTieBreakers>
 </document>

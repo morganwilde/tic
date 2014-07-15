@@ -7,32 +7,55 @@
 //
 
 #import "DisplayVC.h"
+#import "../View/DisplayView.h"
+#import "../View/Layer/Cell.h"
 
 @interface DisplayVC ()
+
+@property (nonatomic, strong) DisplayView *display;
+@property (nonatomic) int gridColumns;
+@property (nonatomic) int gridRows;
 
 @end
 
 @implementation DisplayVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        // Setup
     }
     return self;
 }
-
-- (void)viewDidLoad
+#pragma mark - VC life cycle
+- (void)viewWillLayoutSubviews
 {
-    [super viewDidLoad];
-    NSLog(@"Here");
+    self.gridColumns    = 3;
+    self.gridRows       = 3;
+    CGRect displayRect = CGRectMake(54,
+                                    0,
+                                    660,
+                                    842);
+    self.display = [[DisplayView alloc] initWithFrame:displayRect
+                                      GridSizeColumns:self.gridColumns
+                                                 Rows:self.gridRows];
+    [self.view addSubview:self.display];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewDidAppear:animated];
+    [self.display animateCellsIntoDisplay];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+
+    self.counter++;
+    Cell *cell = (Cell *)[self.display.displayLayer getCellAtX:1 Y:1];
+    [cell merge:(1 << self.counter)];
 }
 
 - (BOOL)prefersStatusBarHidden

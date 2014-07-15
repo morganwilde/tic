@@ -11,10 +11,11 @@
 
 @interface DisplayLayer : CALayer
 
-@property (nonatomic) int cellsInRow;
-@property (nonatomic) int cellsInColumn;
+@property (nonatomic) int gridColumns;
+@property (nonatomic) int gridRows;
 @property (nonatomic) NSMutableArray *cells;
 
++ (id)layerWithSize:(CGRect)rect Columns:(int)columns Rows:(int)rows;
 - (Cell *)getCellAtX:(int)x Y:(int)y;
 
 @end

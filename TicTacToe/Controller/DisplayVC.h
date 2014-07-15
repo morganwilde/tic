@@ -10,4 +10,6 @@
 
 @interface DisplayVC : UIViewController
 
+@property (nonatomic) int counter;
+
 @end

@@ -225,6 +225,19 @@
     NSLog(@"Score: %i", [self.board scoreForCounter:@"X"]);
 }
 
+- (void)testWinningMoves
+{
+    XCTAssertNotNil([self.board winningMoves], @"Winning moves array is nil at start of game, but should be an empty array.");
+    [self.board playCrossMove:CGPointMake(0, 0)];
+    [self.board playCircleMove:CGPointMake(1, 0)];
+    [self.board playCrossMove:CGPointMake(1, 1)];
+    [self.board playCircleMove:CGPointMake(2, 0)];
+    [self.board playCrossMove:CGPointMake(2, 2)];
+    
+    XCTAssertEqual([[self.board winningMoves] count], 3, @"Number of winning moves is incorrect after a win");
+    XCTAssertNotNil([self.board winningMoves], @"Winning moves array is nil after game has been won.");
+}
+
 @end
 
 

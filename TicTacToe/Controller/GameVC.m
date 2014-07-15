@@ -8,10 +8,14 @@
 
 #import "GameVC.h"
 #import "../View/Colorscheme.h"
+#import "../Board.h"
+#import "../AI.h"
 
 @interface GameVC ()
 
 @property (weak, nonatomic) IBOutlet UIView *gridContainer;
+@property (strong, nonatomic) AI *ai;
+@property (strong, nonatomic) Board *board;
 
 @end
 
@@ -23,6 +27,9 @@
     if (self) {
         self.gridWidth = 3;
         self.gridHeight = 3;
+        // Instantiate AI
+        self.ai = [[AI alloc] init];
+        self.board = [[Board alloc] init];
     }
     return self;
 }
@@ -32,6 +39,38 @@
     [super viewWillAppear:animated];
     self.view.backgroundColor = [Colorscheme darkPurpleColor];
     //self.view.backgroundColor = [Colorscheme colorBackground];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self AIDidPlay];
+}
+
+- (void)AIDidPlay
+{
+    CGPoint move = [self.ai nextMoveForBoard:self.board];
+    BOOL success = [self.board playCrossMove:move];
+    if (success) {
+        GridCell *cell = [self getGridCellX:(int)move.x Y:(int)move.y];
+        [cell activate:ZZGridOccupantX];
+        self.playerSymbol = ZZGridOccupantO;
+        [self movePlayed];
+    }
+}
+
+- (void)movePlayed
+{
+    if ([self.board gameOver]) {
+        if (![[self.board winner] isEqualToString:@"DRAW"]) {
+            NSArray *array = [self.board winningMoves];
+            for (NSValue *point in array) {
+                CGPoint move = point.CGPointValue;
+                GridCell *cell = [self getGridCellX:(int)move.x Y:(int)move.y];
+                [cell animateWinningCell];
+            }
+        }
+    }
 }
 
 - (void)viewWillLayoutSubviews
@@ -84,12 +123,15 @@
         [cell activate:ZZGridOccupantX];
         self.playerSymbol = ZZGridOccupantO;
     } else {
-        [cell activate:ZZGridOccupantO];
-        self.playerSymbol = ZZGridOccupantX;
+        CGPoint move = CGPointMake(cell.positionX, cell.positionY);
+        BOOL success = [self.board playCircleMove:move];
+        if (success) {
+            [cell activate:ZZGridOccupantO];
+            self.playerSymbol = ZZGridOccupantX;
+            [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
+            [self movePlayed];
+        }
     }
-    /* Check for merge opportunities */
-    //[cell animateWinningCell];
-    //[self mergeIfAdjacentTo:cell];
 }
 
 - (void)mergeIfAdjacentTo:(GridCell *)cell

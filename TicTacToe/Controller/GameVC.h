@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GridCell.h"
+#import <PlatformSDK/PlatformSDK.h>
 
 typedef enum ZZPlayerSymbol {
     ZZPlayerSymbolNone  = 0,

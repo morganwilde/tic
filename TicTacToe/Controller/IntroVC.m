@@ -7,13 +7,8 @@
 //
 
 #import "IntroVC.h"
-#import "GameVC.h"
-#import "Colorscheme.h"
 
 @interface IntroVC ()
-
-@property (weak, nonatomic) IBOutlet UIButton *practiceButton;
-@property (weak, nonatomic) IBOutlet UIButton *playButton;
 
 @end
 
@@ -28,49 +23,27 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.view.backgroundColor = [Colorscheme darkPurpleColor];
-}
-
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-
-    
-    [self.practiceButton setTitle:@"Practice" forState:UIControlStateNormal];
-    [self.practiceButton setTitleColor:[Colorscheme lightGrayColor] forState:UIControlStateNormal];
-    self.practiceButton.backgroundColor = [Colorscheme blackPurpleColor];
-    [self.practiceButton addTarget:self action:@selector(actOpenPractice) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.practiceButton.titleLabel.font =
-    self.playButton.titleLabel.font     = [UIFont fontWithName:@"Fabada" size:44];
-    [self.playButton setTitleColor:[Colorscheme lightGrayColor] forState:UIControlStateNormal];
-    self.playButton.backgroundColor = [Colorscheme blackPurpleColor];
-    [self.playButton addTarget:self action:@selector(actOpenPlay) forControlEvents:UIControlEventTouchUpInside];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void)actOpenPractice
+- (void)didReceiveMemoryWarning
 {
-    GameVC *gameVC = [[GameVC alloc] init];
-    [self presentViewController:gameVC animated:YES completion:nil];
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-- (void)actOpenPlay
-{
-    GameVC *gameVC = [[GameVC alloc] init];
-    [self presentViewController:gameVC animated:YES completion:nil];
-}
+/*
+#pragma mark - Navigation
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
+*/
 
 @end

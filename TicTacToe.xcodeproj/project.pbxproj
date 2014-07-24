@@ -49,6 +49,10 @@
 		97210AB0196EA468004B8BFD /* BoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97210AAF196EA468004B8BFD /* BoardTests.m */; };
 		97210AB3196ED3D9004B8BFD /* AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 97210AB2196ED3D9004B8BFD /* AI.m */; };
 		974A5EED196E8EB400C46D9B /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 974A5EEC196E8EB400C46D9B /* Board.m */; };
+		97793D6619753C80001C81A2 /* PlatformSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97793D6519753C80001C81A2 /* PlatformSDK.framework */; };
+		97793D6819753CA0001C81A2 /* platformsettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97793D6719753CA0001C81A2 /* platformsettings.plist */; };
+		97793D6A19753CC4001C81A2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97793D6919753CC4001C81A2 /* libsqlite3.0.dylib */; };
+		97793D6C19753CCB001C81A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97793D6B19753CCB001C81A2 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +127,10 @@
 		97210AB2196ED3D9004B8BFD /* AI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI.m; sourceTree = "<group>"; };
 		974A5EEB196E8EB400C46D9B /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		974A5EEC196E8EB400C46D9B /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
+		97793D6519753C80001C81A2 /* PlatformSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PlatformSDK.framework; path = "../Library/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts/PlatformSDK.framework"; sourceTree = "<group>"; };
+		97793D6719753CA0001C81A2 /* platformsettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = platformsettings.plist; sourceTree = "<group>"; };
+		97793D6919753CC4001C81A2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		97793D6B19753CCB001C81A2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +237,8 @@
 		2ECF260C196E8CD200C48EC1 = {
 			isa = PBXGroup;
 			children = (
-				2EADA176197D84D800986BB9 /* PlatformSDK.framework */,
+				97793D6719753CA0001C81A2 /* platformsettings.plist */,
+				97793D6519753C80001C81A2 /* PlatformSDK.framework */,
 				2ECF261E196E8CD200C48EC1 /* TicTacToe */,
 				2ECF2640196E8CD200C48EC1 /* TicTacToeTests */,
 				2ECF2617196E8CD200C48EC1 /* Frameworks */,
@@ -249,8 +258,8 @@
 		2ECF2617196E8CD200C48EC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2EADA178197D857A00986BB9 /* SystemConfiguration.framework */,
-				2EADA174197D83F400986BB9 /* libsqlite3.0.dylib */,
+				97793D6B19753CCB001C81A2 /* SystemConfiguration.framework */,
+				97793D6919753CC4001C81A2 /* libsqlite3.0.dylib */,
 				2ECF2618196E8CD200C48EC1 /* Foundation.framework */,
 				2ECF261A196E8CD200C48EC1 /* CoreGraphics.framework */,
 				2ECF261C196E8CD200C48EC1 /* UIKit.framework */,
@@ -401,6 +410,7 @@
 				2E9A644D19700FBF004AEC82 /* Fabada-regular.ttf in Resources */,
 				2ECF2634196E8CD200C48EC1 /* Images.xcassets in Resources */,
 				2E950E7D1973D69A002EAF02 /* Main_iPad.storyboard in Resources */,
+				97793D6819753CA0001C81A2 /* platformsettings.plist in Resources */,
 				2E9A644F1970115C004AEC82 /* Aldo PC.ttf in Resources */,
 				2E9A64511970218B004AEC82 /* GardensC_03_1.otf in Resources */,
 				2E9A644A19700F30004AEC82 /* Folks-Light.ttf in Resources */,

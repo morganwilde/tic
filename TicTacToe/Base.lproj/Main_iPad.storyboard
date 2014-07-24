@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Wfr-LH-GVX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="S8S-S9-1dQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--IntroVC-->
-        <scene sceneID="8AY-gd-oMB">
+        <!--NavigationVC-->
+        <scene sceneID="OUg-i0-teB">
             <objects>
-                <viewController id="Wfr-LH-GVX" customClass="IntroVC" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="kGX-H6-9k3" customClass="NavigationVC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tjD-OD-r3F">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6de-uj-BPe" kind="relationship" relationship="rootViewController" id="tBq-So-3Vw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5f1-9p-FRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-511" y="-199"/>
+        </scene>
+        <!--IntroVC-->
+        <scene sceneID="hAu-NA-u81">
+            <objects>
+                <viewController id="6de-uj-BPe" customClass="IntroVC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nwF-Q4-4NA"/>
-                        <viewControllerLayoutGuide type="bottom" id="sRH-bN-Wp7"/>
+                        <viewControllerLayoutGuide type="top" id="80P-4c-T2c"/>
+                        <viewControllerLayoutGuide type="bottom" id="6su-65-D7a"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yAC-ex-3yB">
+                    <view key="view" contentMode="scaleToFill" id="zAY-bW-9il">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwq-Hs-wDu">
-                                <rect key="frame" x="209" y="408" width="350" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRR-8d-4Zy">
+                                <rect key="frame" x="346" y="488" width="77" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Practice">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHX-47-qZT">
-                                <rect key="frame" x="209" y="516" width="350" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -36,16 +43,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IPT-oV-Evv"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <connections>
-                        <outlet property="playButton" destination="HHX-47-qZT" id="zEl-yt-q9j"/>
-                        <outlet property="practiceButton" destination="uwq-Hs-wDu" id="xtS-qr-EfV"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="Hfg-uf-Syn"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qc5-XH-Ihb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rbt-ye-jQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="-201"/>
+            <point key="canvasLocation" x="470" y="-199"/>
         </scene>
         <!--GameVC-->
         <scene sceneID="J6d-fD-Nls">
@@ -59,14 +61,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPj-ng-UT3">
-                                <rect key="frame" x="209" y="904" width="350" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNB-6G-O9o">
                                 <rect key="frame" x="84" y="212" width="600" height="600"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,12 +82,30 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="gridContainer" destination="pNB-6G-O9o" id="5Sc-1T-bCS"/>
-                        <outlet property="resetButton" destination="VPj-ng-UT3" id="FG2-Dg-D7b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KT5-nR-bZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1470" y="-199"/>
+        </scene>
+        <!--DisplayVC-->
+        <scene sceneID="lio-TX-xyD">
+            <objects>
+                <viewController id="CWR-IB-ahk" customClass="DisplayVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GEA-QZ-rUa"/>
+                        <viewControllerLayoutGuide type="bottom" id="g3Z-FH-2Gj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JlS-vZ-iUi">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GhC-sm-DeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1470" y="965"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

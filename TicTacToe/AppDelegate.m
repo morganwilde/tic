@@ -7,12 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import <PlatformSDK/PlatformSDK.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [DAO open];
+    [Zzish startWithApplicationId:@"53c5361d03640a7b2a6099af"];
+  
+    ZZUser *newUser = [ZZUser createUser];
+    newUser.name = @"PLAYER";
+    newUser.avatar = @"jaguar";
+    [newUser save];
+    [ZZUser setCurrentUser:newUser];
+    
     return YES;
 }
 							
@@ -41,6 +51,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AppTerminate" object:nil];
+    [Zzish stop];
 }
 
 @end

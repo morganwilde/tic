@@ -133,7 +133,7 @@
                      }
                      completion:^(BOOL finished){
                          if (finished) {
-                             //[self.parentVC resetGrid];
+                             NSLog(@"done");
                          }
                      }];
 }

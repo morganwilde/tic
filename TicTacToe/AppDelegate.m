@@ -9,56 +9,19 @@
 #import "AppDelegate.h"
 #import <PlatformSDK/PlatformSDK.h>
 
-@interface AppDelegate()
-@property (nonatomic, strong) AnalyticsService *sdk;
-@end
-
 @implementation AppDelegate
-
-- (void)initServer {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"platformsettings" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
-    if (settings) {
-        NSString* applicationId = [settings objectForKey:@"APPLICATION_ID"];
-        if (applicationId && ![applicationId isEqualToString:@"NOT SET"]) {
-            self.sdk = [AnalyticsService initWithApplicationId:applicationId];
-            [self.sdk generate];
-        }
-        else {
-            NSLog(@"Application ID must be set in settings.plist if you would like to use PlatformViewController");
-        }
-    }
-    else {
-        NSLog(@"Missing Settings Files");
-    }
-}
-
-- (void)loginToServer
-{
-    if (!self.sdk) {
-        [self initServer];
-    }
-    [self.sdk loginToServer];
-}
-- (void)logoutFromServer
-{
-    if (!self.sdk) {
-        [self initServer];
-    }
-    [self.sdk logoutFromServer];
-}
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     [DAO open];
-    [self loginToServer];
-    User *newUser = [self.sdk createUser];
+    [Zzish startWithApplicationId:@"53c5361d03640a7b2a6099af"];
+  
+    ZZUser *newUser = [ZZUser createUser];
     newUser.name = @"PLAYER";
     newUser.avatar = @"jaguar";
-    [self.sdk updateUser:newUser];
-    [self.sdk setCurrentUser:newUser];
+    [newUser save];
+    [ZZUser setCurrentUser:newUser];
     
     return YES;
 }
@@ -88,7 +51,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [self.sdk logoutFromServer];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AppTerminate" object:nil];
+    [Zzish stop];
 }
 
 @end

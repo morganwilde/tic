@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="S8S-S9-1dQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="kGX-H6-9k3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -8,7 +8,7 @@
         <!--NavigationVC-->
         <scene sceneID="OUg-i0-teB">
             <objects>
-                <navigationController definesPresentationContext="YES" id="kGX-H6-9k3" customClass="NavigationVC" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="kGX-H6-9k3" customClass="NavigationVC" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tjD-OD-r3F">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -32,18 +32,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRR-8d-4Zy">
-                                <rect key="frame" x="346" y="488" width="77" height="47"/>
+                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58c-Vw-g0K" userLabel="Button - multiplayer">
+                                <rect key="frame" x="0.0" y="512" width="768" height="512"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Play">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="multiPlayerButtonPressed:" destination="6de-uj-BPe" eventType="touchUpInside" id="W0S-PE-eNl"/>
+                                    <action selector="multiPlayerButtonTouchDown:" destination="6de-uj-BPe" eventType="touchDown" id="NbK-5Z-tqH"/>
+                                </connections>
                             </button>
+                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMA-xY-0xP" userLabel="Button - singleplayer">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="singlePlayerButtonPressed:" destination="6de-uj-BPe" eventType="touchUpInside" id="iD2-Ct-hVF"/>
+                                    <action selector="singlePlayerButtonTouchDown:" destination="6de-uj-BPe" eventType="touchDown" id="BAH-Ct-zRU"/>
+                                </connections>
+                            </button>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SINGLEPLAYER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zee-wi-wzW">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MULTIPLAYER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoR-xH-UHv">
+                                <rect key="frame" x="0.0" y="520" width="768" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Hfg-uf-Syn"/>
+                    <connections>
+                        <outlet property="multiPlayerButton" destination="58c-Vw-g0K" id="1RJ-bT-gMV"/>
+                        <outlet property="multiPlayerLabel" destination="aoR-xH-UHv" id="dj9-eq-29X"/>
+                        <outlet property="singlePlayerButton" destination="uMA-xY-0xP" id="a4i-MS-bdc"/>
+                        <outlet property="singlePlayerLabel" destination="Zee-wi-wzW" id="SEO-lY-vrc"/>
+                        <outlet property="view" destination="zAY-bW-9il" id="dh0-AP-L3i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rbt-ye-jQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,7 +87,7 @@
         <!--GameVC-->
         <scene sceneID="J6d-fD-Nls">
             <objects>
-                <viewController id="S8S-S9-1dQ" customClass="GameVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameVC" id="S8S-S9-1dQ" customClass="GameVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8KU-w6-pE6"/>
                         <viewControllerLayoutGuide type="bottom" id="Vin-Hk-hwC"/>

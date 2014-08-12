@@ -38,5 +38,7 @@ typedef enum ZZGridCellMergeDirection {
 - (void)activate:(ZZGridOccupant)state;
 - (void)merge:(ZZGridCellMergeDirection)direction;
 - (void)animateWinningCell;
+- (void)animateCellIntoView;
+- (void)animateCellOutOfView;
 
 @end

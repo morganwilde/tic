@@ -24,7 +24,7 @@
         return CGPointMake(0, 0);
     }
     iterations = 0;
-    [self minimaxWithRoot:board withDepth:300 andMaximisingPlayer:YES];
+    [self minimaxWithRoot:board withDepth:arc4random_uniform(4) + 1 andMaximisingPlayer:YES];
     NSLog(@"Best move: %@", NSStringFromCGPoint(self.chosenMove));
     NSLog(@"iterations: %i", iterations);
     return self.chosenMove;
@@ -37,7 +37,7 @@ static int iterations = 0;
     NSMutableArray *scores = [NSMutableArray new];
     NSMutableArray *moves = [NSMutableArray new];
     
-    if (board.gameOver || [[board possibleMoves] count] == 0) {
+    if (board.gameOver || [[board possibleMoves] count] == 0 || depth == 0) {
         int score = [self scoreForBoard:board];
         return score;
     } else {

@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>-XUGAGS63P.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.zzish.xo</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -24,6 +24,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>FontAwesome.ttf</string>
 		<string>Stark.OTF</string>
 		<string>Folks-Bold.ttf</string>
 		<string>Folks-Light.ttf</string>

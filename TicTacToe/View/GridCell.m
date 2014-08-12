@@ -137,6 +137,32 @@
                          }
                      }];
 }
+- (void)animateCellIntoView
+{
+    [UIView animateWithDuration:0.5
+                          delay:0
+         usingSpringWithDamping:0.8
+          initialSpringVelocity:0.8
+                        options:UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{
+                         self.transform = CGAffineTransformMakeScale(1, 1);
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
+- (void)animateCellOutOfView
+{
+    [UIView animateWithDuration:1.0
+                          delay:0
+         usingSpringWithDamping:0.2
+          initialSpringVelocity:0.15
+                        options:UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{
+                         self.transform = CGAffineTransformMakeScale(0, 0);
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
 #pragma mark - Actions
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

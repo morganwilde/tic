@@ -16,7 +16,7 @@ typedef enum ZZPlayerSymbol {
     ZZPlayerSymbolO     = 2
 } ZZPlayerSymbol;
 
-@interface GameVC : PlatformViewController
+@interface GameVC : UIViewController
 
 @property (nonatomic) BOOL isMultiplayer;
 

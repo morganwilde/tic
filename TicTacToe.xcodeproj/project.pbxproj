@@ -44,11 +44,13 @@
 		2ECF2647196E8CD200C48EC1 /* TicTacToeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECF2646196E8CD200C48EC1 /* TicTacToeTests.m */; };
 		97210AB0196EA468004B8BFD /* BoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97210AAF196EA468004B8BFD /* BoardTests.m */; };
 		97210AB3196ED3D9004B8BFD /* AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 97210AB2196ED3D9004B8BFD /* AI.m */; };
+		97382064198F930D00E14F45 /* PlatformSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97382063198F930C00E14F45 /* PlatformSDK.framework */; };
 		974A5EED196E8EB400C46D9B /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 974A5EEC196E8EB400C46D9B /* Board.m */; };
-		97793D6619753C80001C81A2 /* PlatformSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97793D6519753C80001C81A2 /* PlatformSDK.framework */; };
 		97793D6819753CA0001C81A2 /* platformsettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97793D6719753CA0001C81A2 /* platformsettings.plist */; };
 		97793D6A19753CC4001C81A2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97793D6919753CC4001C81A2 /* libsqlite3.0.dylib */; };
 		97793D6C19753CCB001C81A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97793D6B19753CCB001C81A2 /* SystemConfiguration.framework */; };
+		97FA69FF19814E6000D66840 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97FA69FE19814E6000D66840 /* FontAwesome.ttf */; };
+		97FA6A0219814E6900D66840 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FA6A0119814E6900D66840 /* NSString+FontAwesome.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +101,7 @@
 		2E9A644C19700FBF004AEC82 /* Fabada-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fabada-regular.ttf"; sourceTree = "<group>"; };
 		2E9A644E1970115C004AEC82 /* Aldo PC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aldo PC.ttf"; sourceTree = "<group>"; };
 		2E9A64501970218B004AEC82 /* GardensC_03_1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GardensC_03_1.otf; sourceTree = "<group>"; };
-		2ECF2615196E8CD200C48EC1 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ECF2615196E8CD200C48EC1 /* xo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECF2618196E8CD200C48EC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2ECF261A196E8CD200C48EC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2ECF261C196E8CD200C48EC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -118,12 +120,15 @@
 		97210AAF196EA468004B8BFD /* BoardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardTests.m; sourceTree = "<group>"; };
 		97210AB1196ED3D9004B8BFD /* AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI.h; sourceTree = "<group>"; };
 		97210AB2196ED3D9004B8BFD /* AI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI.m; sourceTree = "<group>"; };
+		97382063198F930C00E14F45 /* PlatformSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PlatformSDK.framework; path = "../Library/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts/PlatformSDK.framework"; sourceTree = "<group>"; };
 		974A5EEB196E8EB400C46D9B /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		974A5EEC196E8EB400C46D9B /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
-		97793D6519753C80001C81A2 /* PlatformSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PlatformSDK.framework; path = "../Library/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts/PlatformSDK.framework"; sourceTree = "<group>"; };
 		97793D6719753CA0001C81A2 /* platformsettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = platformsettings.plist; sourceTree = "<group>"; };
 		97793D6919753CC4001C81A2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		97793D6B19753CCB001C81A2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		97FA69FE19814E6000D66840 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		97FA6A0019814E6900D66840 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		97FA6A0119814E6900D66840 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,9 +136,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97382064198F930D00E14F45 /* PlatformSDK.framework in Frameworks */,
 				97793D6C19753CCB001C81A2 /* SystemConfiguration.framework in Frameworks */,
 				97793D6A19753CC4001C81A2 /* libsqlite3.0.dylib in Frameworks */,
-				97793D6619753C80001C81A2 /* PlatformSDK.framework in Frameworks */,
 				2ECF261B196E8CD200C48EC1 /* CoreGraphics.framework in Frameworks */,
 				2ECF261D196E8CD200C48EC1 /* UIKit.framework in Frameworks */,
 				2ECF2619196E8CD200C48EC1 /* Foundation.framework in Frameworks */,
@@ -216,6 +221,7 @@
 		2E9A644519700DD2004AEC82 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				97FA69FE19814E6000D66840 /* FontAwesome.ttf */,
 				2E9A64501970218B004AEC82 /* GardensC_03_1.otf */,
 				2E9A644E1970115C004AEC82 /* Aldo PC.ttf */,
 				2E9A644C19700FBF004AEC82 /* Fabada-regular.ttf */,
@@ -230,8 +236,8 @@
 		2ECF260C196E8CD200C48EC1 = {
 			isa = PBXGroup;
 			children = (
+				97382063198F930C00E14F45 /* PlatformSDK.framework */,
 				97793D6719753CA0001C81A2 /* platformsettings.plist */,
-				97793D6519753C80001C81A2 /* PlatformSDK.framework */,
 				2ECF261E196E8CD200C48EC1 /* TicTacToe */,
 				2ECF2640196E8CD200C48EC1 /* TicTacToeTests */,
 				2ECF2617196E8CD200C48EC1 /* Frameworks */,
@@ -242,7 +248,7 @@
 		2ECF2616196E8CD200C48EC1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2ECF2615196E8CD200C48EC1 /* TicTacToe.app */,
+				2ECF2615196E8CD200C48EC1 /* xo.app */,
 				2ECF2639196E8CD200C48EC1 /* TicTacToeTests.xctest */,
 			);
 			name = Products;
@@ -264,6 +270,8 @@
 		2ECF261E196E8CD200C48EC1 /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				97FA6A0019814E6900D66840 /* NSString+FontAwesome.h */,
+				97FA6A0119814E6900D66840 /* NSString+FontAwesome.m */,
 				97A5BBB5196E8E8B00AA4938 /* Model */,
 				2E0309931973D4C400242BB9 /* Controller */,
 				2E0309A01973D4F300242BB9 /* View */,
@@ -320,9 +328,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2ECF2614196E8CD200C48EC1 /* TicTacToe */ = {
+		2ECF2614196E8CD200C48EC1 /* xo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2ECF264A196E8CD200C48EC1 /* Build configuration list for PBXNativeTarget "TicTacToe" */;
+			buildConfigurationList = 2ECF264A196E8CD200C48EC1 /* Build configuration list for PBXNativeTarget "xo" */;
 			buildPhases = (
 				2ECF2611196E8CD200C48EC1 /* Sources */,
 				2ECF2612196E8CD200C48EC1 /* Frameworks */,
@@ -332,9 +340,9 @@
 			);
 			dependencies = (
 			);
-			name = TicTacToe;
+			name = xo;
 			productName = TicTacToe;
-			productReference = 2ECF2615196E8CD200C48EC1 /* TicTacToe.app */;
+			productReference = 2ECF2615196E8CD200C48EC1 /* xo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2ECF2638196E8CD200C48EC1 /* TicTacToeTests */ = {
@@ -385,7 +393,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2ECF2614196E8CD200C48EC1 /* TicTacToe */,
+				2ECF2614196E8CD200C48EC1 /* xo */,
 				2ECF2638196E8CD200C48EC1 /* TicTacToeTests */,
 			);
 		};
@@ -397,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E9A644419700DC7004AEC82 /* Stark.OTF in Resources */,
+				97FA69FF19814E6000D66840 /* FontAwesome.ttf in Resources */,
 				2E9A644B19700F30004AEC82 /* Folks-Normal.ttf in Resources */,
 				2E9A644919700F30004AEC82 /* Folks-Bold.ttf in Resources */,
 				2E9A644D19700FBF004AEC82 /* Fabada-regular.ttf in Resources */,
@@ -436,6 +445,7 @@
 				2ECF2625196E8CD200C48EC1 /* main.m in Sources */,
 				2E03099C1973D4E700242BB9 /* CharacterView.m in Sources */,
 				2E950E851973D736002EAF02 /* DisplayView.m in Sources */,
+				97FA6A0219814E6900D66840 /* NSString+FontAwesome.m in Sources */,
 				2E0309901973D4C000242BB9 /* IntroVC.m in Sources */,
 				2E950E881973D837002EAF02 /* DisplayLayer.m in Sources */,
 				2E03098F1973D4C000242BB9 /* GameVC.m in Sources */,
@@ -461,7 +471,7 @@
 /* Begin PBXTargetDependency section */
 		2ECF263F196E8CD200C48EC1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2ECF2614196E8CD200C48EC1 /* TicTacToe */;
+			target = 2ECF2614196E8CD200C48EC1 /* xo */;
 			targetProxy = 2ECF263E196E8CD200C48EC1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -579,17 +589,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Howell (2G6KCE7SYJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicTacToe/TicTacToe-Prefix.pch";
 				INFOPLIST_FILE = "TicTacToe/TicTacToe-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -600,17 +613,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Howell (2G6KCE7SYJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicTacToe/TicTacToe-Prefix.pch";
 				INFOPLIST_FILE = "TicTacToe/TicTacToe-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -668,7 +684,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2ECF264A196E8CD200C48EC1 /* Build configuration list for PBXNativeTarget "TicTacToe" */ = {
+		2ECF264A196E8CD200C48EC1 /* Build configuration list for PBXNativeTarget "xo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2ECF264B196E8CD200C48EC1 /* Debug */,

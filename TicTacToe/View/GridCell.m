@@ -42,6 +42,12 @@
         self.symbolO = [[Symbol alloc] initWithFrame:self.bounds andSymbol:ZZSymbolTypeO];
         [self addSubview:self.symbolX];
         [self addSubview:self.symbolO];
+        
+        self.layer.masksToBounds = NO;
+        self.layer.shadowOffset = CGSizeMake(0, 0);
+        self.layer.shadowOpacity = 0;
+        self.layer.shadowRadius = 25;
+        self.layer.shadowColor = [Colorscheme brightGreenColor].CGColor;
     }
     return self;
 }
@@ -137,6 +143,7 @@
                          }
                      }];
 }
+
 - (void)animateCellIntoView
 {
     [UIView animateWithDuration:0.5

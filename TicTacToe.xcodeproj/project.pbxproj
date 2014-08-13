@@ -30,10 +30,7 @@
 		2E9A644D19700FBF004AEC82 /* Fabada-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A644C19700FBF004AEC82 /* Fabada-regular.ttf */; };
 		2E9A644F1970115C004AEC82 /* Aldo PC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A644E1970115C004AEC82 /* Aldo PC.ttf */; };
 		2E9A64511970218B004AEC82 /* GardensC_03_1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2E9A64501970218B004AEC82 /* GardensC_03_1.otf */; };
-		2EADA175197D83F400986BB9 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EADA174197D83F400986BB9 /* libsqlite3.0.dylib */; };
-		2EADA177197D84D800986BB9 /* PlatformSDK.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2EADA176197D84D800986BB9 /* PlatformSDK.framework */; };
-		2EADA179197D857A00986BB9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EADA178197D857A00986BB9 /* SystemConfiguration.framework */; };
-		2EADA17A197D859400986BB9 /* PlatformSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EADA176197D84D800986BB9 /* PlatformSDK.framework */; };
+		2EB5D9E7199BFFFD006CB796 /* PlatformSDK copy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5D9E6199BFFFD006CB796 /* PlatformSDK copy.framework */; };
 		2ECF2619196E8CD200C48EC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECF2618196E8CD200C48EC1 /* Foundation.framework */; };
 		2ECF261B196E8CD200C48EC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECF261A196E8CD200C48EC1 /* CoreGraphics.framework */; };
 		2ECF261D196E8CD200C48EC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECF261C196E8CD200C48EC1 /* UIKit.framework */; };
@@ -48,9 +45,7 @@
 		2ECF2647196E8CD200C48EC1 /* TicTacToeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECF2646196E8CD200C48EC1 /* TicTacToeTests.m */; };
 		97210AB0196EA468004B8BFD /* BoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97210AAF196EA468004B8BFD /* BoardTests.m */; };
 		97210AB3196ED3D9004B8BFD /* AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 97210AB2196ED3D9004B8BFD /* AI.m */; };
-		97382064198F930D00E14F45 /* PlatformSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97382063198F930C00E14F45 /* PlatformSDK.framework */; };
 		974A5EED196E8EB400C46D9B /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 974A5EEC196E8EB400C46D9B /* Board.m */; };
-		97793D6819753CA0001C81A2 /* platformsettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97793D6719753CA0001C81A2 /* platformsettings.plist */; };
 		97793D6A19753CC4001C81A2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97793D6919753CC4001C81A2 /* libsqlite3.0.dylib */; };
 		97793D6C19753CCB001C81A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97793D6B19753CCB001C81A2 /* SystemConfiguration.framework */; };
 		97FA69FF19814E6000D66840 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97FA69FE19814E6000D66840 /* FontAwesome.ttf */; };
@@ -105,11 +100,8 @@
 		2E9A644C19700FBF004AEC82 /* Fabada-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fabada-regular.ttf"; sourceTree = "<group>"; };
 		2E9A644E1970115C004AEC82 /* Aldo PC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aldo PC.ttf"; sourceTree = "<group>"; };
 		2E9A64501970218B004AEC82 /* GardensC_03_1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GardensC_03_1.otf; sourceTree = "<group>"; };
+		2EB5D9E6199BFFFD006CB796 /* PlatformSDK copy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "PlatformSDK copy.framework"; path = "../../../../Library/Developer/Xcode/DerivedData/PlatformSDK-aftepheezginvlaouaqfrzsfyvyv/Build/Intermediates/ArchiveIntermediates/Zzish-DEV/IntermediateBuildFilesPath/UninstalledProducts/PlatformSDK copy.framework"; sourceTree = "<group>"; };
 		2ECF2615196E8CD200C48EC1 /* xo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EADA174197D83F400986BB9 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		2EADA176197D84D800986BB9 /* PlatformSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PlatformSDK.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PlatformSDK-aftepheezginvlaouaqfrzsfyvyv/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts/PlatformSDK.framework"; sourceTree = "<group>"; };
-		2EADA178197D857A00986BB9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		2ECF2615196E8CD200C48EC1 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECF2618196E8CD200C48EC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2ECF261A196E8CD200C48EC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2ECF261C196E8CD200C48EC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -128,10 +120,8 @@
 		97210AAF196EA468004B8BFD /* BoardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardTests.m; sourceTree = "<group>"; };
 		97210AB1196ED3D9004B8BFD /* AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI.h; sourceTree = "<group>"; };
 		97210AB2196ED3D9004B8BFD /* AI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI.m; sourceTree = "<group>"; };
-		97382063198F930C00E14F45 /* PlatformSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PlatformSDK.framework; path = "../Library/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts/PlatformSDK.framework"; sourceTree = "<group>"; };
 		974A5EEB196E8EB400C46D9B /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		974A5EEC196E8EB400C46D9B /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
-		97793D6719753CA0001C81A2 /* platformsettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = platformsettings.plist; sourceTree = "<group>"; };
 		97793D6919753CC4001C81A2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		97793D6B19753CCB001C81A2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		97FA69FE19814E6000D66840 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -144,9 +134,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97382064198F930D00E14F45 /* PlatformSDK.framework in Frameworks */,
 				97793D6C19753CCB001C81A2 /* SystemConfiguration.framework in Frameworks */,
 				97793D6A19753CC4001C81A2 /* libsqlite3.0.dylib in Frameworks */,
+				2EB5D9E7199BFFFD006CB796 /* PlatformSDK copy.framework in Frameworks */,
 				2ECF261B196E8CD200C48EC1 /* CoreGraphics.framework in Frameworks */,
 				2ECF261D196E8CD200C48EC1 /* UIKit.framework in Frameworks */,
 				2ECF2619196E8CD200C48EC1 /* Foundation.framework in Frameworks */,
@@ -244,8 +234,7 @@
 		2ECF260C196E8CD200C48EC1 = {
 			isa = PBXGroup;
 			children = (
-				97382063198F930C00E14F45 /* PlatformSDK.framework */,
-				97793D6719753CA0001C81A2 /* platformsettings.plist */,
+				2EB5D9E6199BFFFD006CB796 /* PlatformSDK copy.framework */,
 				2ECF261E196E8CD200C48EC1 /* TicTacToe */,
 				2ECF2640196E8CD200C48EC1 /* TicTacToeTests */,
 				2ECF2617196E8CD200C48EC1 /* Frameworks */,
@@ -412,7 +401,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EADA177197D84D800986BB9 /* PlatformSDK.framework in Resources */,
 				2E9A644419700DC7004AEC82 /* Stark.OTF in Resources */,
 				97FA69FF19814E6000D66840 /* FontAwesome.ttf in Resources */,
 				2E9A644B19700F30004AEC82 /* Folks-Normal.ttf in Resources */,
@@ -420,7 +408,6 @@
 				2E9A644D19700FBF004AEC82 /* Fabada-regular.ttf in Resources */,
 				2ECF2634196E8CD200C48EC1 /* Images.xcassets in Resources */,
 				2E950E7D1973D69A002EAF02 /* Main_iPad.storyboard in Resources */,
-				97793D6819753CA0001C81A2 /* platformsettings.plist in Resources */,
 				2E9A644F1970115C004AEC82 /* Aldo PC.ttf in Resources */,
 				2E9A64511970218B004AEC82 /* GardensC_03_1.otf in Resources */,
 				2E9A644A19700F30004AEC82 /* Folks-Light.ttf in Resources */,
@@ -603,8 +590,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PlatformSDK-aftepheezginvlaouaqfrzsfyvyv/Build/Intermediates/ArchiveIntermediates/Zzish-DEV/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicTacToe/TicTacToe-Prefix.pch";
@@ -627,8 +614,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PlatformSDK-ecdcscyxrmdjhxgxessbnbbxmlqr/Build/Intermediates/ArchiveIntermediates/PlatformSDK/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PlatformSDK-aftepheezginvlaouaqfrzsfyvyv/Build/Intermediates/ArchiveIntermediates/Zzish-DEV/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicTacToe/TicTacToe-Prefix.pch";

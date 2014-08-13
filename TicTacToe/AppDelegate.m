@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <PlatformSDK/PlatformSDK.h>
+#import <PlatformSDK copy/PlatformSDK.h>
 
 @implementation AppDelegate
 
@@ -15,10 +15,10 @@
 {
     // Override point for customization after application launch.
     [DAO open];
-    [Zzish startWithApplicationId:@"53c5361d03640a7b2a6099af"];
+    [Zzish startWithApplicationId:@"53ebc352e4b0648ad7712fb9"];
   
     ZZUser *newUser = [ZZUser createUser];
-    newUser.name = @"PLAYER";
+    newUser.firstname = @"PLAYER";
     newUser.avatar = @"jaguar";
     [newUser save];
     [ZZUser setCurrentUser:newUser];

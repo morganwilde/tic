@@ -19,12 +19,17 @@
 
 @property (strong, nonatomic) AI *ai;
 @property (strong, nonatomic) Board *board;
+<<<<<<< HEAD
+@property (strong, nonatomic) Activity *gameActivity;
+
+@property (nonatomic) BOOL isMyTurn;
+=======
 @property (strong, nonatomic) ZZActivity *gameActivity;
 
 @property (strong, nonatomic) UILabel *spinnerLabel;
+>>>>>>> 82c5a0b029a3ff49f65fc30127e9763827deb963
 
 @property (nonatomic) BOOL isMyTurn;
-@property (nonatomic) unsigned int movesPlayed;
 - (void)movePlayed;
 @end
 
@@ -44,18 +49,10 @@
     return self;
 }
 
-- (void)activityLoaded:(NSNotification *)note {
-    NSLog(@"we're here Jim.");
-    NSDictionary *dict = [note userInfo];
-    ZZActivity *activity = (ZZActivity *)dict[@"ACTIVITY"];
-    self.gameActivity = activity;
-}
-
 - (id)init
 {
     self = [super init];
     if (self) {
-        // Notifications
         self.gridWidth = 3;
         self.gridHeight = 3;
         // Instantiate AI
@@ -95,13 +92,37 @@
 {
     [super viewDidLoad];
     
+<<<<<<< HEAD
+    NSLog(@"multi: %i", self.isMultiplayer);
+    if (self.isMultiplayer) {
+        self.gameActivity = [[Activity alloc] init];
+        self.gameActivity.name = @"GAME18";
+        self.gameActivity.user = [self.sdk currentUser];
+        self.gameActivity.multiplayer = self.isMultiplayer;
+        self.gameActivity.level = 1;
+        self.gameActivity.activityType = 1;
+
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundPartner:) name:@"NSActivityReady" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(partnerPlayed:) name:@"NSNewAction" object:nil];
+
+        [self.sdk startActivity:self.gameActivity];
+=======
     if (self.isMultiplayer) {
         self.gameActivity = [[ZZActivity alloc] init];
-        self.gameActivity.name = @"GAME51";
+        self.gameActivity.name = @"GAME50";
         self.gameActivity.user = [ZZUser currentUser];
         self.gameActivity.multiplayer = self.isMultiplayer;
         self.gameActivity.level = 1;
-        self.gameActivity.activityType = ZZActivityTypePlaying;
+        self.gameActivity.activityType = 1;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundPartner:) name:@"NSActivityReady" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(partnerPlayed:) name:@"NSNewAction" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(partnerCancelled:) name:@"NSActivityCancelled" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:@"AppTerminate" object:nil];
+
+        [self.gameActivity start];
+>>>>>>> 82c5a0b029a3ff49f65fc30127e9763827deb963
     }
 }
 
@@ -109,26 +130,22 @@
 {
     [super viewWillAppear:animated];
     self.view.backgroundColor = [Colorscheme darkPurpleColor];
-    NSLog(@"notification added!");
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundPartner:)        name:@"ZZChallengeAccepted" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundPartner:)        name:@"NSActivityReady" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(activityLoaded:)      name:@"NSActivityLoaded" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(partnerPlayed:)       name:@"NSNewAction" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(partnerCancelled:)    name:@"NSActivityCancelled" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:)    name:@"AppTerminate" object:nil];
-    self.movesPlayed = 0;
-    [super viewWillAppear:animated];
+    //self.view.backgroundColor = [Colorscheme colorBackground];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+<<<<<<< HEAD
+    [self animateCellsIntoView];
+    if (!self.isMultiplayer) {
+        [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
+=======
     if (!self.isMultiplayer) {
         [self animateCellsIntoView];
         [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
     } else {
         // Show spinner!
-        [self.gameActivity start];
         
         CGRect screen = [[UIScreen mainScreen] bounds];
         self.spinnerLabel = [[UILabel alloc] initWithFrame:CGRectMake(screen.size.width / 2 - 150, screen.size.height / 2 - 150, 300, 300)];
@@ -155,10 +172,10 @@
         [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{
                              [self.spinnerLabel setAlpha:1.0];
-                         }
-                         completion:^(BOOL finished) {
+                         } completion:^(BOOL finished) {
                          }];
 
+>>>>>>> 82c5a0b029a3ff49f65fc30127e9763827deb963
     }
 }
 
@@ -312,6 +329,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         [self.spinnerLabel setAlpha:0];
     } completion:^(BOOL finished) {
+        [self animateCellsIntoView];
         // Load the board with Morgan's fancy animation!
         NSDictionary *userInfo = notification.userInfo;
         ZZActivity *activity = [userInfo objectForKey:@"ACTIVITY"];
@@ -321,57 +339,13 @@
             NSLog(@"not my turn!");
             self.isMyTurn = NO;
             self.playerSymbol = ZZPlayerSymbolO;
-            [self animateCellsIntoView];
         } else {
             NSLog(@"my turn!");
             self.isMyTurn = YES;
             self.playerSymbol = ZZPlayerSymbolX;
-            if (self.movesPlayed == 1) {
-                CGFloat width = self.gridContainer.bounds.size.width;
-                CGFloat height = ((UIView *)self.gridContainer.subviews[0]).bounds.size.height;
-                CGRect rect = CGRectMake(self.gridContainer.bounds.origin.x,
-                                         self.gridContainer.bounds.origin.y + self.gridContainer.bounds.size.height/2.0 - height/2.0,
-                                         width,
-                                         height);
-                CGRect rectHidden = rect;
-                rectHidden.origin.y = -self.view.frame.size.height;
-                CGRect rectDown = rect;
-                rectDown.origin.y = self.view.frame.size.height;
-                
-                UILabel *yourTurnLabel = [[UILabel alloc] initWithFrame:rectHidden];
-                yourTurnLabel.text = @"Your First";
-                yourTurnLabel.textAlignment = NSTextAlignmentCenter;
-                yourTurnLabel.textColor = [Colorscheme brightGreenColor];
-                yourTurnLabel.font = [UIFont fontWithName:@"Fabada" size:72];
-                
-                [self.gridContainer addSubview:yourTurnLabel];
-                
-                [UIView animateWithDuration:0.5 animations:^{
-                    yourTurnLabel.frame = rect;
-                } completion:^(BOOL finished) {
-                    [UIView  animateWithDuration:0.25
-                                           delay:0.5
-                                         options:UIViewAnimationOptionCurveEaseInOut
-                                      animations:^{
-                                          yourTurnLabel.frame = rectDown;
-                                      }
-                                      completion:^(BOOL finished) {
-                                          if (finished) {
-                                              [yourTurnLabel removeFromSuperview];
-                                              [self animateCellsIntoView];
-                                          }
-                                      }];
-                }];
-            }
         }
 
     }];
-}
-
-- (void)setIsMyTurn:(BOOL)isMyTurn
-{
-    _isMyTurn = isMyTurn;
-    self.movesPlayed++;
 }
 
 - (void)partnerPlayed:(NSNotification *)notification
@@ -494,8 +468,149 @@
     }
 }
 
+<<<<<<< HEAD
+- (NSMutableArray *)grid
+{
+    if (!_grid) {
+        _grid = [[NSMutableArray alloc] init];
+    }
+    return _grid;
+}
+
+- (GridCell *)getGridCellX:(int)x Y:(int)y
+{
+    if (x >= 0 && x < self.gridWidth &&
+        y >= 0 && y < self.gridHeight) {
+        return (GridCell *)self.grid[x + y * self.gridWidth];
+    }
+    return nil;
+}
+
+#pragma mark - User move
+- (void)touchReceivedFor:(GridCell *)cell
+{
+    if (self.isMultiplayer) {
+        if (!self.isMyTurn) {
+            NSLog(@"Not my turn!");
+            return;
+        }
+        
+        CGPoint move = CGPointMake(cell.positionX, cell.positionY);
+        NSLog(@"move: %@", NSStringFromCGPoint(move));
+        BOOL success;
+        if (self.playerSymbol == ZZPlayerSymbolX) {
+            success = [self.board playCrossMove:move];
+        } else {
+            success = [self.board playCircleMove:move];
+        }
+
+        if (success) {
+            if (self.playerSymbol == ZZPlayerSymbolX) {
+                [cell activate:ZZGridOccupantX];
+            } else {
+                [cell activate:ZZGridOccupantO];
+            }
+            Action *action = [[Action alloc] init];
+            action.name = @"MOVE";
+            action.activity = self.gameActivity;
+//            [action setObject:[NSString stringWithFormat:@"%f", move.x] forKey:@"moveX"];
+//            [action setObject:[NSString stringWithFormat:@"%f", move.y] forKey:@"moveY"];
+            action.score = move.x;
+            action.duration = move.y;
+            [self.sdk updateAction:action];
+            NSLog(@"Logging action");
+            [self.sdk logAction:action];
+        
+            [self movePlayed];
+            self.isMyTurn = NO;
+        }
+    } else {
+        /* Place the symbol */
+        if (self.playerSymbol == ZZPlayerSymbolX) {
+            [cell activate:ZZGridOccupantX];
+            self.playerSymbol = ZZGridOccupantO;
+        } else {
+            CGPoint move = CGPointMake(cell.positionX, cell.positionY);
+            BOOL success = [self.board playCircleMove:move];
+            if (success) {
+                [cell activate:ZZGridOccupantO];
+                self.playerSymbol = ZZGridOccupantX;
+                if (!self.isMultiplayer) {
+                    [self performSelector:@selector(AIDidPlay) withObject:self afterDelay:0.25];
+                } else {
+                    Action *action = [[Action alloc] init];
+                    action.name = @"MOVE";
+                    action.activity = self.gameActivity;
+//                    [action setObject:[NSString stringWithFormat:@"%f", move.x] forKey:@"moveX"];
+//                    [action setObject:[NSString stringWithFormat:@"%f", move.y] forKey:@"moveY"];
+                    action.score = move.x;
+                    action.duration = move.y;
+                    [self.sdk updateAction:action];
+                    NSLog(@"Logging action");
+                    [self.sdk logAction:action];
+                }
+                [self movePlayed];
+                self.isMyTurn = NO;
+            }
+        }
+    }
+}
+
+=======
+>>>>>>> 82c5a0b029a3ff49f65fc30127e9763827deb963
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+#pragma mark - Multiplayer
+- (void)foundPartner:(NSNotification *)notification
+{
+    NSLog(@"Found partner!");
+    // Load the board with Morgan's fancy animation!
+    NSDictionary *userInfo = notification.userInfo;
+    Activity *activity = [userInfo objectForKey:@"ACTIVITY"];
+    NSLog(@"partner activity: %@", activity);
+    NSLog(@"inititator : %i", activity.initiator);
+    if (activity.initiator == 1) {
+        NSLog(@"not my turn!");
+        self.isMyTurn = NO;
+        self.playerSymbol = ZZPlayerSymbolO;
+    } else {
+        NSLog(@"my turn!");
+        self.isMyTurn = YES;
+        self.playerSymbol = ZZPlayerSymbolX;
+    }
+}
+
+- (void)partnerPlayed:(NSNotification *)notification
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        NSLog(@"Partner played!");
+        NSDictionary* userInfo = notification.userInfo;
+        Action* action = [userInfo objectForKey:@"ACTION"];
+        CGPoint move = CGPointMake(action.score, action.duration);
+        NSLog(@"move received: %@", NSStringFromCGPoint(move));
+        NSLog(@"Map: %@", [action attributesMap]);
+        BOOL success;
+        
+        if (self.playerSymbol == ZZPlayerSymbolX) {
+            success = [self.board playCircleMove:move];
+        } else {
+            success = [self.board playCrossMove:move];
+        }
+        
+        if (success) {
+            GridCell *cell = [self getGridCellX:(int)move.x Y:(int)move.y];
+            if (self.playerSymbol == ZZPlayerSymbolX) {
+                [cell activate:ZZGridOccupantO];
+            } else {
+                [cell activate:ZZGridOccupantX];
+            }
+            [cell setNeedsDisplay];
+            self.isMyTurn = YES;
+        }
+        [self movePlayed];
+    });
 }
 
 @end

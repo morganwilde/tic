@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "GridCell.h"
-#import <PlatformSDK copy/PlatformSDK.h>
 
 typedef enum ZZPlayerSymbol {
     ZZPlayerSymbolNone  = 0,
@@ -17,8 +16,6 @@ typedef enum ZZPlayerSymbol {
 } ZZPlayerSymbol;
 
 @interface GameVC : UIViewController
-
-@property (nonatomic) BOOL isMultiplayer;
 
 /* Grid settings */
 @property (nonatomic) int gridWidth;
